@@ -7,8 +7,9 @@
 
 <h1>Projects</h1>
 
-{#each projects as p}
+
 <div class="projects">
+    {#each projects as p}
     <article>
         <h2>Lorem ipsum dolor sit.</h2>
         <img src="https://vis-society.github.io/labs/2/images/empty.svg" alt="">
