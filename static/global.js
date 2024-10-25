@@ -6,13 +6,13 @@ function $$(selector, context = document) {
 }
 
 // Define the pages for the navigation menu
-let pages = [
+/*let pages = [
   { url: '/my-portfolio/', title: 'Home' },
   { url: '/my-portfolio/projects', title: 'Projects' },
   { url: '/my-portfolio/resume', title: 'Resume' },
   { url: '/my-portfolio/contacts', title: 'Contacts' },
   { url: 'https://github.com/chm011', title: 'Github Profile' }
-];
+]; */
 
 // Create the <nav> element and prepend it to the body
 let nav = document.createElement('nav');
