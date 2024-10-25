@@ -1,5 +1,7 @@
 
 <script>
+import { page } from '$app/stores';
+
 let pages = [
   { url: '/my-portfolio/', title: 'Home' },
   { url: '/my-portfolio/projects', title: 'Projects' },
@@ -17,4 +19,9 @@ let pages = [
     {/each}
   </nav>
 
+  {
+    JSON.stringify($page);
+  }
+
+  
   <slot />
