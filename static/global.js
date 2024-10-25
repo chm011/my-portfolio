@@ -12,7 +12,7 @@ function $$(selector, context = document) {
   { url: '/my-portfolio/resume', title: 'Resume' },
   { url: '/my-portfolio/contacts', title: 'Contacts' },
   { url: 'https://github.com/chm011', title: 'Github Profile' }
-]; */
+]; 
 
 // Create the <nav> element and prepend it to the body
 let nav = document.createElement('nav');
@@ -35,6 +35,7 @@ if (a.host === location.host && a.pathname === location.pathname) {
 if (a.host !== location.host) {
     a.target = '_blank';
 }}
+*/
 
 // Insert the theme switcher into the body
 document.body.insertAdjacentHTML(
