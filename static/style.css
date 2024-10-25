@@ -1,0 +1,183 @@
+:root {
+  --selected-page-color: oklch(80% 3% 200);
+  --color-accent: oklch(65% 50% 0); 
+}
+
+body {
+    /* Set line height to 1.5 times the font size
+         and use the OS’s UI font as the website font
+       */
+    font: 100%/1.5 system-ui;
+    max-width: 100ch;
+    margin-inline: auto;
+    padding: 5ch;
+    accent-color: var(--color-accent);
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.2ch;
+    border-bottom: 1px solid var(--selected-page-color); /* width style color */
+  }
+
+nav a {
+  flex: 1; /* equal width for each nav button*/
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 1em;
+  
+}
+
+nav a.current {
+  border-bottom:0.4em solid var(--selected-page-color);
+  padding-bottom: 0.5em;
+}
+
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.5em;
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+
+input,
+textarea,
+button {
+  font: inherit;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+button{
+  grid-column: 1/ -1;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+
+article{
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+h1 {
+  font-size: 4em;
+}
+h2 {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+#resume h2 {
+  text-align: center;
+  border-bottom: 1.5px solid black;
+  padding-bottom: 0.1em;
+}
+
+#summary p {
+  font-size: 13px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.colleges{
+  margin-bottom: 15px;
+}
+
+.colleges div {
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.school-name{
+  float:left;
+  font-weight: bold;
+}
+.graduation-year{
+  float: right;
+
+}
+
+.degree {
+  margin-top: 0;
+  font-style: italic;
+  color: #555;
+}
+
+.work-experience-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.job-title{
+  font-weight:bold;
+  font-size: 19px;
+  margin-bottom: 0 ;
+  color: darkslategrey;
+}
+.company-name {
+  font-size: 16px;
+  margin-top: 0;
+}
+
+
+.responsibilities {
+  margin-top: 5px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.responsibilities li {
+  margin-bottom: 5px;
+}
+
+td {
+  padding: 0;
+}
+
+
+.color-scheme{
+  position: absolute;
+  top: 1rem;
+  right:1rem;
+  font-size:80%;
+}
+
+
+html{
+  color-scheme: light dark;
+}
+
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom-color: var(--border-color);
+  padding: 10px;
+}
+
+body {
+  background-color: canvas;
+  color: canvastext;
+}
+
+
+
+.color-scheme {
+  font-size: 80%;
+  font-family: inherit;
+}
