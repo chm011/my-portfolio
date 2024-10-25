@@ -12,6 +12,7 @@ let pages = [
 </script>
 
 
+{JSON.stringify($page);}
 <nav>
     {#each pages as p }
     <a href = {p.url}>{p.title}</a>
@@ -19,9 +20,6 @@ let pages = [
     {/each}
   </nav>
 
-  {
-    JSON.stringify($page);
-  }
 
-  
+
   <slot />
