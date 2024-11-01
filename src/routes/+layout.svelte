@@ -2,6 +2,7 @@
 <script>
 import '../style.css';
 import { page } from '$app/stores';
+    import { onMount } from 'svelte';
 
 let pages = [
   { url: '/my-portfolio/', title: 'Home' },
@@ -11,30 +12,9 @@ let pages = [
   { url: 'https://github.com/chm011', title: 'Github Profile' }
 ];
 
-</script>
-
-
-<!--Navigation Bar-->
-<nav>
-    {#each pages as p }
-    <a
-        href={p.url} 
-        class:current={$page.url.pathname === p.url}
-        target={ p.url.startsWith("http") ? "_blank" : null }>
-        {p.title}
-      </a>
-      
-    {/each}
-    
-  </nav>
-
-
-<!--page content-->
-  <slot />
-
-<!--theme switcher-->
+onMount(() => {
 document.body.insertAdjacentHTML(
-  'beforeend', // Use 'beforeend' to prevent overwriting <nav>
+  'beforeend', 
   `
   <label class="color-scheme" style="position: absolute; top: 1rem; right: 1rem;">
     Theme:
@@ -68,6 +48,30 @@ if (select) {
     localStorage.setItem('colorScheme', scheme);
   });
 }
+});
+
+</script>
+
+
+<!--Navigation Bar-->
+<nav>
+    {#each pages as p }
+    <a
+        href={p.url} 
+        class:current={$page.url.pathname === p.url}
+        target={ p.url.startsWith("http") ? "_blank" : null }>
+        {p.title}
+      </a>
+      
+    {/each}
+    
+  </nav>
+
+
+<!--page content-->
+  <slot />
+
+
 
 <!--style css-->
 <style>
@@ -77,13 +81,10 @@ if (select) {
     flex-direction: row;
     margin-bottom: 0.2ch;
     border-bottom: 1px solid var(--selected-page-color); /* width style color */
+    --border-color: oklch(50% 10% 200 / 40%);
+    border-bottom-color: var(--border-color);
+    padding: 10px;
   }
-  
-  nav {
-  --border-color: oklch(50% 10% 200 / 40%);
-  border-bottom-color: var(--border-color);
-  padding: 10px;
-}
 
 
 nav a {
@@ -113,9 +114,6 @@ nav a:hover {
   top: 1rem;
   right:1rem;
   font-size:80%;
-}
-
-.color-scheme {
   font-size: 80%;
   font-family: inherit;
 }
