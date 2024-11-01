@@ -38,7 +38,7 @@ if (a.host !== location.host) {
 */
 
 // Insert the theme switcher into the body
-document.body.insertAdjacentHTML(
+/*document.body.insertAdjacentHTML(
   'beforeend', // Use 'beforeend' to prevent overwriting <nav>
   `
   <label class="color-scheme" style="position: absolute; top: 1rem; right: 1rem;">
@@ -72,4 +72,4 @@ if (select) {
     console.log('Color scheme changed to', scheme);
     localStorage.setItem('colorScheme', scheme);
   });
-}
+} */

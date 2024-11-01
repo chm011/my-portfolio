@@ -126,23 +126,8 @@ td {
 }
 
 
-.color-scheme{
-  position: absolute;
-  top: 1rem;
-  right:1rem;
-  font-size:80%;
-}
 
 
-html{
-  color-scheme: light dark;
-}
-
-nav {
-  --border-color: oklch(50% 10% 200 / 40%);
-  border-bottom-color: var(--border-color);
-  padding: 10px;
-}
 
 body {
   background-color: canvas;
@@ -151,7 +136,3 @@ body {
 
 
 
-.color-scheme {
-  font-size: 80%;
-  font-family: inherit;
-}
