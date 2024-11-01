@@ -2,7 +2,7 @@
 <script>
 import '../style.css';
 import { page } from '$app/stores';
-    import { onMount } from 'svelte';
+import { onMount } from 'svelte';
 
 let pages = [
   { url: '/my-portfolio/', title: 'Home' },
@@ -12,45 +12,26 @@ let pages = [
   { url: 'https://github.com/chm011', title: 'Github Profile' }
 ];
 
-onMount(() => {
-document.body.insertAdjacentHTML(
-  'beforeend', 
-  `
-  <label class="color-scheme" style="position: absolute; top: 1rem; right: 1rem;">
-    Theme:
-    <select id="theme-switcher">
-      <option value="light dark">Automatic</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
-  </label>`
-);
+let colorScheme = 'light dark';
+let root = globalThis?.document?.documentElement;
+$: root?.style.setProperty('color-scheme', colorScheme);
 
-// Function to set the color scheme
-function setColorScheme(scheme) {
-  document.documentElement.style.setProperty('color-scheme', scheme);
-}
-
-// Handle theme switching
-const select = document.querySelector('#theme-switcher');
-
-if (select) {
-  const savedScheme = localStorage.getItem('colorScheme');
-  if (savedScheme) {
-    setColorScheme(savedScheme);
-    select.value = savedScheme;
-  }
-
-  select.addEventListener('input', function (event) {
-    const scheme = event.target.value;
-    setColorScheme(scheme);
-    console.log('Color scheme changed to', scheme);
-    localStorage.setItem('colorScheme', scheme);
-  });
-}
-});
+let localStorage = globalThis.localStorage ?? {};
+$: localStorage.colorScheme = colorScheme;
 
 </script>
+
+
+<!--theme switcher-->
+{colorScheme}
+<label class="color-scheme" style="position: absolute; top: 1rem; right: 1rem;">
+  Theme:
+  <select bind:value={ colorScheme }>
+    <option value="light dark">Automatic</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+</label>
 
 
 <!--Navigation Bar-->
