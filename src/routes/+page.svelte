@@ -11,6 +11,8 @@
   src="/my-portfolio/PHOTO-2023-04-03-22-38-17.jpg" alt="Profile Photo"  width="200" height="270" 
 />
 
+
+
 <h2>Lastest Projects </h2>
 <div class ="projects">
   {#each projects.slice(0,3) as project}
