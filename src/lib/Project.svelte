@@ -9,6 +9,7 @@ export let hLevel =2;
     </svelte:element>
     
     <img src={data.image} alt={data.title} width=300px height=200px/>
+    <p>{data.year}</p>
     <p>{data.description}</p>
 </article>
 
