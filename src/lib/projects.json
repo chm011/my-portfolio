@@ -8,8 +8,8 @@
     {
         "title": "Internet Usage Trends",
         "year": "2024",
-        "image": "https://github.com/chm011/projects/blob/8be822ee73df8d0df98c9f6f8f07342eb12f9640/Visualizations/Internet%20Usage%20Trends%20-%20Earnest.png",
-        "image": "https://github.com/chm011/projects/blob/8be822ee73df8d0df98c9f6f8f07342eb12f9640/Visualizations/Internet%20Usage%20Trends%20-%20Deceptive.png",
+        "image": "https://raw.githubusercontent.com/chm011/projects/refs/heads/main/Visualizations/Internet%20Usage%20Trends%20-%20Earnest.png",
+        "image": "https://raw.githubusercontent.com/chm011/projects/refs/heads/main/Visualizations/Internet%20Usage%20Trends%20-%20Deceptive.png",
         "description": "How does internet usage vary between countries as developement progresses?"
     },
     {
