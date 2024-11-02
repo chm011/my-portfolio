@@ -1,13 +1,13 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "Tracking Seasons",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit illum, veritatis odio animi cum, labore doloremque minus dignissimos enim consequuntur aut excepturi provident cupiditate? Dignissimos, consequatur quod! Similique, perferendis enim."
+        "description": "How much rain and sun does each city get throughout the year?"
     },
     {
-        "title": "Obcaecati saepe molestias sequi!",
+        "title": "Internet Usage Trends",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Consequuntur voluptate tenetur suscipit tempore cum, in omnis consectetur maxime impedit quae quos sed corrupti odit eveniet similique ut totam voluptates, fugiat culpa saepe nulla dolore? Totam, porro. Nobis, eos."
+        "description": "How does internet usage vary between countries as developement progresses?"
     },
     {
         "title": "Pariatur ab numquam tempore.",
