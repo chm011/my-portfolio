@@ -8,6 +8,7 @@ export let hLevel =2;
         {data.title}
     </svelte:element>
     
-    <img src={data.image} alt={data.title}/>
+    <img src={data.image} alt={data.title} width=300px height=200px/>
     <p>{data.description}</p>
 </article>
+
