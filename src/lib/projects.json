@@ -1,12 +1,15 @@
 [
     {
         "title": "Tracking Seasons",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "year": "2024",
+        "image": "https://github.com/chm011/projects/blob/main/Visualizations/Tracking%20Season%20Line%20Graph.png",
         "description": "How much rain and sun does each city get throughout the year?"
     },
     {
         "title": "Internet Usage Trends",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "year": "2024",
+        "image": "https://github.com/chm011/projects/blob/main/Visualizations/Internet%20Usage%20Trends%20-%20Earnest.png",
+        "image": "https://github.com/chm011/projects/blob/main/Visualizations/Internet%20Usage%20Trends%20-%20Deceptive.png",
         "description": "How does internet usage vary between countries as developement progresses?"
     },
     {
@@ -16,46 +19,55 @@
     },
     {
         "title": "Officiis quod aliquam iure!",
+        "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Modi, tenetur error ea quos harum voluptatibus officiis? Soluta exercitationem aperiam vel ducimus, aspernatur placeat, minus blanditiis atque saepe tenetur tempora hic asperiores minima. Praesentium voluptate fuga excepturi vel magni?"
     },
     {
         "title": "Delectus expedita vel doloremque.",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Expedita nisi commodi et necessitatibus? Sapiente, aperiam. Sed quos necessitatibus asperiores eveniet? Repellat minus id nulla dignissimos itaque modi minima nihil ipsum ducimus autem debitis fugiat labore, voluptates veritatis ea!"
     },
     {
         "title": "Officia saepe culpa a!",
+        "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Maxime necessitatibus sit veniam molestias cupiditate est mollitia explicabo quas excepturi nostrum temporibus illo accusamus accusantium ducimus culpa debitis doloribus, esse, tempore at labore atque fugiat beatae. Unde, esse blanditiis!"
     },
     {
         "title": "Temporibus velit est labore.",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Atque quasi harum sapiente cumque, accusantium explicabo tempora nihil. Est numquam dolorem ex. Quaerat rem ipsum eum? Ex, esse? Sunt sed facilis enim commodi fugit amet nam maxime magnam inventore."
     },
     {
         "title": "Deleniti earum architecto amet.",
+        "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Maxime, non ducimus et possimus voluptates iure architecto accusamus suscipit praesentium animi! Vero quia accusantium neque assumenda distinctio quas eveniet facere. Obcaecati provident, consequuntur assumenda omnis totam perferendis ea? Doloribus."
     },
     {
         "title": "Ipsa voluptatibus eos numquam.",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Inventore quibusdam distinctio quae praesentium exercitationem sunt fugit possimus rerum quas eius aperiam reiciendis illum officiis est, nostrum vero labore repudiandae sint quod eos. Perspiciatis fugiat repellat esse saepe quod."
     },
     {
         "title": "Aspernatur recusandae dolor et.",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Incidunt facere, quae minima assumenda voluptatibus delectus praesentium eius corporis, cumque error sequi veniam dicta et dolore pariatur nulla autem a quasi in deserunt commodi fugit inventore odio iusto. Quisquam."
     },
     {
         "title": "Assumenda dolores consequuntur aliquam.",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Minus similique rem, inventore fugit cum esse dolore vel doloremque aliquid laudantium saepe, vero quo itaque, possimus qui? Tempore nostrum temporibus ipsam mollitia repellendus nesciunt assumenda ex libero impedit voluptatem."
     },
     {
         "title": "Magnam, animi. Ea, cupiditate.",
+        "year": "2022",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "Ut, aspernatur modi inventore dolorem iusto commodi pariatur nostrum praesentium sit, quod autem eligendi, vel odit repellendus error vero quia veniam accusamus. Sed culpa reiciendis perferendis iste rem dolor ad!"
     }
