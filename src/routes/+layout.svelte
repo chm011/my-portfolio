@@ -23,7 +23,6 @@ $: localStorage.colorScheme = colorScheme;
 
 
 <!--theme switcher-->
-{colorScheme}
 <label class="color-scheme" style="position: absolute; top: 1rem; right: 1rem;">
   Theme:
   <select bind:value={ colorScheme }>
