@@ -5,10 +5,16 @@ export let hLevel =2;
 
 <article>
     <svelte:element this={'h' + hLevel}>
-        {data.title} -  {data.year} 
+        {data.title} 
     </svelte:element>
     
     <img src={data.image} alt={data.title} width=300px height=200px/>
+    <div>
     <p>{data.description}</p>
+    </div>
+
+    <div>
+    <p>est. {data.year}</p>
+    </div>
 </article>
 
