@@ -16,7 +16,7 @@ export let hLevel =2;
 </article>
 
 <style>
-.project_description {
+#project_description {
     font-family:Baskerville;
     font-variant-numeric: oldstyle-nums;
 }
