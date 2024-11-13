@@ -25,17 +25,21 @@ let arcs = arcData.map((d) => arcGenerator(d));
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>
 
-
 <svg viewBox="-50 -50 100 100">
-    <ul class="legend">
-        {#each data as d, index}
-        <li style="--color: { colors(index) }">
-          <span class="swatch"></span>
-          {d.label} <em>({d.value})</em>
-        </li>
-        {/each}
-      </ul>
-</svg>
+    {#each arcs as arc, i}
+      <path d="{arc}" fill="{colors(i)}" />
+    {/each}
+  </svg>
+  
+
+  <ul class="legend">
+    {#each data as d, index}
+      <li style="--color: {colors(index)}">
+        <span class="swatch"></span>
+        {d.label} <em>({d.value})</em>
+      </li>
+    {/each}
+  </ul>
 
 
 
