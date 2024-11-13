@@ -7,8 +7,18 @@ let arc = arcGenerator({
   endAngle: 2 * Math.PI,
 });
 
-let data = [1, 2, 3, 4, 5, 5];
-let sliceGenerator = d3.pie();
+let data = [
+  { value: 1, label: 'apples' },
+  { value: 2, label: 'oranges' },
+  { value: 3, label: 'mangos' },
+  { value: 4, label: 'pears' },
+  { value: 5, label: 'limes' },
+  { value: 5, label: 'cherries' },
+];
+
+
+let sliceGenerator = d3.pie().value((d) => d.value);
+
 let arcData = sliceGenerator(data);
 let arcs = arcData.map((d) => arcGenerator(d));
 
@@ -17,9 +27,14 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 
 <svg viewBox="-50 -50 100 100">
-    {#each arcs as arc, i}
-    <path d="{arc}" fill="{colors(i)}" />
-    {/each}
+    <ul class="legend">
+        {#each data as d, index}
+        <li style="--color: { colors(index) }">
+          <span class="swatch"></span>
+          {d.label} <em>({d.value})</em>
+        </li>
+        {/each}
+      </ul>
 </svg>
 
 
