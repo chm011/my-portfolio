@@ -30,8 +30,8 @@ let colors = ['gold', 'purple'];
 
 
 <svg viewBox="-50 -50 100 100">
-    {#each arcs as arc}
-        <path d="{" arc } fill="{" colors[i] } />
+    {#each arcs as arc, i}
+    <path d="{" arc } fill="{" colors[i] } />
     {/each}
   </svg>
 
