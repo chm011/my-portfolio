@@ -10,20 +10,20 @@
     (d) => d.year,
     );
   
-let pieData;
-
-$: {
+  let pieData;
+  $:{
+    pieData={};
+    
     let rolledData = d3.rollups(
-      filteredProjects,
-      (v) => v.length,
-      (d) => d.year
-    );
+    filteredProjects,
+    (v) => v.length,
+    (d) => d.year
+  );
 
-    pieData = rolledData.map(([year, count]) => {
-      return { value: count, label: year };
-    });
+  pieData = rolledData.map(([year, count]) => {
+    return { value: count, label: year };
+  });
   }
-
 let query = '';
 
 let filteredProjects;
