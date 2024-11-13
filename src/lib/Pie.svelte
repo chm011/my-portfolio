@@ -7,7 +7,9 @@ let arc = arcGenerator({
   endAngle: 2 * Math.PI,
 });
 
-let data = [
+export let data = [];
+
+let pieData = [
   { value: 1, label: 'apples' },
   { value: 2, label: 'oranges' },
   { value: 3, label: 'mangos' },

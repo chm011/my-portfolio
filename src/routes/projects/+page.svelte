@@ -10,7 +10,7 @@
 
 <h1>{projects.length} Projects</h1>
 
-<Pie />
+<Pie data="{pieData}" />
 
 <div class="projects">
     {#each projects as project}
