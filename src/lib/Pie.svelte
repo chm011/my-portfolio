@@ -56,6 +56,10 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
         gap: 1em; 
+
+        padding: 1em;  
+        margin-top: 1em; 
+        border: 1px solid #ccc;
         
     }
 
@@ -65,11 +69,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         gap: 0.5em;
 
     }
-    
-    .legend em {
-    font-style: normal;
-    color: gray;
-  }
+
 
     .swatch {
     width: 1em;
