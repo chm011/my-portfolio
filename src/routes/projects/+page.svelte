@@ -15,17 +15,18 @@ $: filteredProjects = projects.filter((project) => {
 });
   
 let pieData;
-  $:{
-    pieData={};
 
+  $:{
+    const currentProjects = filteredProjects;
+    pieData={};
     let rolledData = d3.rollups(
-      filteredProjects,
+      currentProjects,
       (v) => v.length,
       (d) => d.year
       );
     
-      pieData = rolledData.map(([year, count]) => {
-        return { value: count, label: year };
+    pieData = rolledData.map(([year, count]) => {
+      return { value: count, label: year };
       });
   }
 
