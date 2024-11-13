@@ -4,15 +4,25 @@
    import Pie from '$lib/Pie.svelte';
    import * as d3 from 'd3';
 
-  $: rolledData = d3.rollups(
+  let rolledData = d3.rollups(
     projects,
     (v) => v.length,
     (d) => d.year,
     );
   
-  $: pieData = rolledData.map(([year, count]) => {
-  return { value: count, label: year };
-});
+let pieData;
+
+$: {
+    let rolledData = d3.rollups(
+      filteredProjects,
+      (v) => v.length,
+      (d) => d.year
+    );
+
+    pieData = rolledData.map(([year, count]) => {
+      return { value: count, label: year };
+    });
+  }
 
 let query = '';
 
