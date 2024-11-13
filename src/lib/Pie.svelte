@@ -25,23 +25,23 @@ let arcs = arcData.map((d) => arcGenerator(d));
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>
 
-<svg viewBox="-50 -50 100 100">
-    {#each arcs as arc, i}
-      <path d="{arc}" fill="{colors(i)}" />
-    {/each}
-  </svg>
-  
+<div class="legend-container">
+    <svg viewBox="-50 -50 100 100">
+        {#each arcs as arc, i}
+        <path d="{arc}" fill="{colors(i)}" />
+        {/each}
+    </svg>
+    
+    <ul class="legend">
+        {#each data as d, index}
+        <li style="--color: {colors(index)}">
+            <span class="swatch"></span>
+            {d.label} <em>({d.value})</em>
+        </li>
+        {/each}
+    </ul>
 
-  <ul class="legend">
-    {#each data as d, index}
-      <li style="--color: {colors(index)}">
-        <span class="swatch"></span>
-        {d.label} <em>({d.value})</em>
-      </li>
-    {/each}
-  </ul>
-
-
+</div>
 
 
 <style>
@@ -67,6 +67,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         display: flex;
         align-items: center;
         gap: 0.5em;
+        flex: 1;
 
     }
 
@@ -79,5 +80,8 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     border-radius: 50%; 
     display: inline-block; 
     border: 1px solid #ccc;
+  }
+  .legend-container{
+    align-items: center;
   }
 </style>
