@@ -8,27 +8,28 @@ let arc = arcGenerator({
 });
 
 export let data = [];
+export let selectedIndex = -1;
 
 let sliceGenerator = d3.pie().value((d) => d.value);
 
 $: arcData = sliceGenerator(data);
-
 $: arcs = arcData.map((d) => arcGenerator(d));
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-export let selectedIndex = -1;
+
 
 </script>
 
 <div class="legend-container">
     <svg viewBox="-50 -50 100 100">
         {#each arcs as arc, index} 
-        <path d={arc} fill={ colors(index) }
-            class:selected={selectedIndex === index} 
-            on:click={e => selectedIndex = index}
-            selectedIndex = selectedIndex === index ? -1 : index;
-            />
+        <path 
+        d={arc} 
+        fill={colors(index)}
+        class:selected={selectedIndex === index}
+        on:click={() => selectedIndex = selectedIndex === index ? -1 : index}
+      />
         {/each}
     </svg>
     
