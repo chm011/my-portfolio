@@ -11,5 +11,12 @@
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
+		<input
+		type="search"
+  		bind:value="{query}"
+  		aria-label="Search projects"
+  		placeholder="🔍 Search projects…"
+		/>
+
 	</body>
 </html>
