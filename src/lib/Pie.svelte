@@ -65,6 +65,11 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         gap: 0.5em;
 
     }
+    
+    .legend em {
+    font-style: normal;
+    color: gray;
+  }
 
     .swatch {
     width: 1em;
