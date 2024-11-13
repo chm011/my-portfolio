@@ -14,6 +14,8 @@
   return { value: count, label: year };
 });
 
+let query = '';
+
 </script>
 
 <svelte:head>
@@ -21,6 +23,13 @@
 </svelte:head>
 
 <h1>{projects.length} Projects</h1>
+
+<input
+  type="search"
+  bind:value="{query}"
+  aria-label="Search projects"
+  placeholder="🔍 Search projects…"
+/>
 
 <Pie data="{pieData}" />
 
