@@ -47,4 +47,28 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         /* Do not clip shapes outside the viewBox */
         overflow: visible;
     }
+    
+    .legend {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+        gap: 1em; 
+        
+    }
+
+    .legend li{
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+    }
+
+    .swatch {
+    width: 1em;
+    height: 1em;
+    aspect-ratio: 1 / 1;
+    background-color: var(--color); 
+    border-radius: 50%; 
+    display: inline-block; 
+    border: 1px solid #ccc;
+  }
 </style>
