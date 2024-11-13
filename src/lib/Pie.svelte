@@ -9,12 +9,6 @@ let arc = arcGenerator({
 
 export let data = [];
 
-let rolledData = d3.rollups(
-  projects,
-  (v) => v.length,
-  (d) => d.year,
-  );
-  
 let sliceGenerator = d3.pie().value((d) => d.value);
 
 let arcData = sliceGenerator(data);
