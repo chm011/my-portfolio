@@ -31,22 +31,18 @@ let colors = ['gold', 'purple'];
 
 <svg viewBox="-50 -50 100 100">
     {#each arcs as arc, i}
-    <path d="{" arc } fill="{" colors[i] } />
+    <path d="{arc}" fill="{colors[i]}" />
     {/each}
-  </svg>
-
-
-
+</svg>
 
 
 
 
 <style>
     svg {
-  max-width: 20em;
-  margin-block: 2em;
-
-  /* Do not clip shapes outside the viewBox */
-  overflow: visible;
-}
+        max-width: 20em;
+        margin-block: 2em;
+        /* Do not clip shapes outside the viewBox */
+        overflow: visible;
+    }
 </style>
