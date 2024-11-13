@@ -3,16 +3,15 @@
    import Project from '$lib/Project.svelte';
    import Pie from '$lib/Pie.svelte';
 
-   let pieData = rolledData.map(([year, count]) => {
-  return { value: count, label: year };
-});
-
-
   let rolledData = d3.rollups(
   projects,
   (v) => v.length,
   (d) => d.year,
   );
+  
+  let pieData = rolledData.map(([year, count]) => {
+  return { value: count, label: year };
+});
 
 </script>
 
