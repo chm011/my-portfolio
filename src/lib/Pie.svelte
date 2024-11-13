@@ -9,16 +9,6 @@ let arc = arcGenerator({
 
 export let data = [];
 
-let pieData = [
-  { value: 1, label: 'apples' },
-  { value: 2, label: 'oranges' },
-  { value: 3, label: 'mangos' },
-  { value: 4, label: 'pears' },
-  { value: 5, label: 'limes' },
-  { value: 5, label: 'cherries' },
-];
-
-
 let sliceGenerator = d3.pie().value((d) => d.value);
 
 let arcData = sliceGenerator(data);
