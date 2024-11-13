@@ -2,13 +2,8 @@
    import projects from '$lib/projects.json';
    import Project from '$lib/Project.svelte';
    import Pie from '$lib/Pie.svelte';
-
-  let rolledData = d3.rollups(
-  projects,
-  (v) => v.length,
-  (d) => d.year,
-  );
   
+
   let pieData = rolledData.map(([year, count]) => {
   return { value: count, label: year };
 });
