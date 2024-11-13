@@ -71,7 +71,6 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
     }
 
-
     .swatch {
     width: 1em;
     height: 1em;
@@ -83,5 +82,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
   }
   .legend-container{
     align-items: center;
+    max-width: 100%;
+    padding: 1em;
   }
 </style>
