@@ -23,13 +23,13 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 <div class="legend-container">
     <svg viewBox="-50 -50 100 100">
-        {#each arcs as arc, index} 
-        <path 
-        d={arc} 
-        fill={colors(index)}
-        class:selected={selectedIndex === index}
-        on:click={() => selectedIndex = selectedIndex === index ? -1 : index}
-      />
+        {#each arcData as arc, index}
+          <path 
+            d={arcGenerator(arc)}     <!-- Generate each arc dynamically -->
+            fill={colors(index)}
+            class:selected={selectedIndex === index}
+            on:click={() => selectedIndex = selectedIndex === index ? -1 : index}
+          />
         {/each}
     </svg>
     
@@ -96,7 +96,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
   }
 
   .selected {
-  --color: oklch(60% 45% 0) !important;
+    --color: oklch(60% 45% 0) !important;
 
   &:is(path) {
     fill: var(--color);
