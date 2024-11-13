@@ -10,6 +10,7 @@
 
 <h1>{projects.length} Projects</h1>
 
+<pie></pie>
 
 <div class="projects">
     {#each projects as project}
