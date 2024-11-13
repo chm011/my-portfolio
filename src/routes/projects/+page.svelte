@@ -16,6 +16,15 @@
 
 let query = '';
 
+let filteredProjects;
+$: filteredProjects = projects.filter((project) => {
+  if (query) {
+    return project.title.includes(query);
+  }
+
+  return true;
+});
+
 </script>
 
 <svelte:head>
