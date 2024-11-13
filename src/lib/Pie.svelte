@@ -11,8 +11,9 @@ export let data = [];
 
 let sliceGenerator = d3.pie().value((d) => d.value);
 
-let arcData = sliceGenerator(data);
-let arcs = arcData.map((d) => arcGenerator(d));
+$: arcData = sliceGenerator(data);
+
+$: arcs = arcData.map((d) => arcGenerator(d));
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>
