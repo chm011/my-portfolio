@@ -4,8 +4,17 @@
    import Pie from '$lib/Pie.svelte';
    import * as d3 from 'd3';
 
+let query = '';
+let filteredProjects;
+$: filteredProjects = projects.filter((project) => {
+  if (query) {
+    return project.title.includes(query);
+  }
+
+  return true;
+});
   
-  let pieData;
+let pieData;
   $:{
     pieData={};
 
@@ -19,16 +28,6 @@
         return { value: count, label: year };
       });
   }
-let query = '';
-
-let filteredProjects;
-$: filteredProjects = projects.filter((project) => {
-  if (query) {
-    return project.title.includes(query);
-  }
-
-  return true;
-});
 
 </script>
 
