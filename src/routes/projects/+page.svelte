@@ -43,7 +43,8 @@ $: filteredProjects = projects.filter((project) => {
 <Pie data="{pieData}" />
 
 <div class="projects">
-    {#each projects as project}
+  {#each filteredProjects as project}
     <Project data={project} />
-    {/each}
+  {/each}
 </div>
+
