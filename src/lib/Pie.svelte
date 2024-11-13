@@ -16,12 +16,19 @@ $: arcData = sliceGenerator(data);
 $: arcs = arcData.map((d) => arcGenerator(d));
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+export let selectedIndex = -1;
+
 </script>
 
 <div class="legend-container">
     <svg viewBox="-50 -50 100 100">
-        {#each arcs as arc, i}
-        <path d="{arc}" fill="{colors(i)}" />
+        {#each arcs as arc, index} 
+        <path d={arc} fill={ colors(index) }
+            class:selected={selectedIndex === index} 
+            on:click={e => selectedIndex = index}
+            selectedIndex = selectedIndex === index ? -1 : index;
+            />
         {/each}
     </svg>
     
@@ -35,6 +42,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     </ul>
 
 </div>
+
 
 
 <style>
@@ -74,6 +82,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     display: inline-block; 
     border: 1px solid #ccc;
   }
+
   .legend-container{
     display: flex;
     flex-wrap: wrap;
@@ -82,4 +91,12 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     padding: 1em;
     gap: 2em;
   }
+
+  .selected {
+  --color: oklch(60% 45% 0) !important;
+
+  &:is(path) {
+    fill: var(--color);
+  }
+}
 </style>
