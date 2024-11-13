@@ -38,11 +38,13 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 
 <style>
-    svg {
-        max-width: 20em;
-        margin-block: 2em;
-        /* Do not clip shapes outside the viewBox */
-        overflow: visible;
+    svg:has(path:hover) {
+        path:not(:hover) {
+            opacity: 50%;
+        }
+    }
+    path{
+        transition: opacity 300ms;
     }
     
     .legend {
