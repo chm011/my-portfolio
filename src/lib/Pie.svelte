@@ -56,7 +56,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
         gap: 1em; 
-
+        flex: 1;
         padding: 1em;  
         margin-top: 1em; 
         border: 1px solid #ccc;
@@ -67,7 +67,6 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         display: flex;
         align-items: center;
         gap: 0.5em;
-        flex: 1;
 
     }
 
@@ -81,8 +80,11 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     border: 1px solid #ccc;
   }
   .legend-container{
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     max-width: 100%;
     padding: 1em;
+    gap: 2em;
   }
 </style>
