@@ -1,13 +1,14 @@
 <script>
 import * as d3 from 'd3';
 
-let arc = d3.arc().innerRadius(0).outerRadius(50)({
+let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+let arc = arcGenerator({
   startAngle: 0,
   endAngle: 2 * Math.PI,
 });
 
-let data = [1, 2];
 
+let data = [1, 2];
 let total = 0;
 
 for (let d of data) {
@@ -24,19 +25,18 @@ for (let d of data) {
 }
 
 let arcs = arcData.map((d) => arcGenerator(d));
-
 let colors = ['gold', 'purple'];
 </script>
 
 
 <svg viewBox="-50 -50 100 100">
-    <path d="{arc}" fill="red" />
+    {#each arcs as arc}
+        <path d="{" arc } fill="{" colors[i] } />
+    {/each}
   </svg>
 
 
-{#each arcs as arc}
-    <path d="{" arc } fill="{" colors[i] } />
-{/each}
+
 
 
 
