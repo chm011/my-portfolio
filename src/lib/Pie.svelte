@@ -35,11 +35,13 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     
     <ul class="legend">
         {#each data as d, index}
-        <li style="--color: {colors(index)}">
+          <li style="--color: {colors(index)}">
             <span class="swatch"></span>
             {d.label} <em>({d.value})</em>
-        </li>
+          </li>
         {/each}
+      </ul>
+    
     </ul>
 
 </div>
