@@ -27,8 +27,8 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
         <path 
             d={arc} 
             fill={ colors(index) }
-            class:selected={selectedIndex = selectedIndex === index ? -1 : index;} 
-            on:click={e => selectedIndex = index}
+            class:selected={selectedIndex === index}
+            on:click={() => selectedIndex = selectedIndex === index ? -1 : index}
             /> 
         {/each}
     </svg>
