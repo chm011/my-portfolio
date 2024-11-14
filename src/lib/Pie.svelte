@@ -22,7 +22,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 </script>
 
 <div class="legend-container">
-    <svg viewBox="-50 -50 100 100">
+    <svg viewBox="-50 -50 100 100" width="200" height="200">
       {#each arcData as arc, index}
         <path 
           d={arcGenerator(arc)}   
