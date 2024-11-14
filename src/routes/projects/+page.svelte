@@ -62,7 +62,7 @@ let pieData;
 <Pie data="{pieData}" bind:selectedIndex="{selectedYearIndex}" />
 
 <div class="projects">
-  {#each filteredProjects as project}
+  {#each filteredByYear as project}
     <Project data={project} />
   {/each}
 </div>
