@@ -23,14 +23,14 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 <div class="legend-container">
     <svg viewBox="-50 -50 100 100" width="200" height="200">
-      {#each arcData as arc, index}
+        {#each arcs as arc, index} 
         <path 
-          d={arcGenerator(arc)}   
-          fill={colors(index)}
-          class:selected={selectedIndex === index}
-          on:click={() => selectedIndex = selectedIndex === index ? -1 : index}
-        />
-      {/each}
+            d={arc} 
+            fill={ colors(index) }
+            class:selected={selectedIndex = selectedIndex === index ? -1 : index;} 
+            on:click={e => selectedIndex = index}
+            /> 
+        {/each}
     </svg>
     
     <ul class="legend">
