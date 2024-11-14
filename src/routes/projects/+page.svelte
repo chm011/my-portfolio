@@ -4,6 +4,7 @@
    import Pie from '$lib/Pie.svelte';
    import * as d3 from 'd3';
 
+   
 let query = '';
 let filteredProjects;
 $: filteredProjects = projects.filter((project) => {
@@ -29,6 +30,13 @@ let pieData;
       });
   }
 
+  let selectedYearIndex = -1;
+
+  let selectedYear;
+  $: selectedYear =
+  selectedYearIndex > -1 ? pieData[selectedYearIndex].label : null;
+  
+
 </script>
 
 <svelte:head>
@@ -44,7 +52,7 @@ let pieData;
   placeholder="🔍 Search projects…"
 />
 
-<Pie data="{pieData}" />
+<Pie data="{pieData}" bind:selectedIndex="{selectedYearIndex}" />
 
 <div class="projects">
   {#each filteredProjects as project}
