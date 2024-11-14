@@ -54,6 +54,7 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
     }
     path{
         transition: opacity 300ms;
+        outline: none;
     }
     
     .legend {
