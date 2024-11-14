@@ -6,6 +6,9 @@
 
    
 let query = '';
+let selectedYearIndex = -1;
+let selectedYear; 
+
 let filteredProjects;
 $: filteredProjects = projects.filter((project) => {
   if (query) {
@@ -14,6 +17,14 @@ $: filteredProjects = projects.filter((project) => {
 
   return true;
 });
+
+let filteredByYear;
+  $: filteredByYear = filteredProjects.filter((project) => {
+    if (selectedYear) {
+      return project.year === selectedYear;
+    }
+    return true;
+  });
   
 let pieData;
 
@@ -30,12 +41,8 @@ let pieData;
       });
   }
 
-  let selectedYearIndex = -1;
-
-  let selectedYear;
-  $: selectedYear =
-  selectedYearIndex > -1 ? pieData[selectedYearIndex].label : null;
-  
+  $: selectedYear = selectedYearIndex > -1 ? pieData[selectedYearIndex].label : null;
+</script>
 
 </script>
 
