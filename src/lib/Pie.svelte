@@ -47,11 +47,10 @@ let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 
 <style>
-    svg:has(path:hover) {
-        path:not(:hover) {
-            opacity: 0.5;
-        }
+    svg:hover path:not(:hover) {
+        opacity: 50%;
     }
+
     path{
         transition: opacity 300ms;
         outline: none;
