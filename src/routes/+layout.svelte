@@ -10,7 +10,7 @@ let pages = [
   { url: '/my-portfolio/resume', title: 'Resume' },
   { url: '/my-portfolio/contacts', title: 'Contacts' },
   { url: 'https://github.com/chm011', title: 'Github Profile' },
-  { url: '/my-portfolio/meta', title:'Metea'}
+  { url: '/my-portfolio/meta', title:'Meta'}
 ];
 
 let colorScheme = 'light dark';
