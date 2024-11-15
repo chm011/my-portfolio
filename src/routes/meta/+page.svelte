@@ -49,18 +49,38 @@ onMount(async () => {
     return ret;
   });
 
-  console.log(commits)
+  const fileGroups = d3.groups(data, (d) => d.file);
+  numberOfFiles = fileGroups.length;
+
+  fileGroups.forEach(([file, lines]) => {
+      const fileLength = lines.length;
+      if (fileLength > maxFileLength) {
+        maxFileLength = fileLength;
+        longestFile = file;
+      }
+    });
+    
+    averageFileLength = numberOfFiles > 0 ? totalFileLength / numberOfFiles : 0;
+
+
+
 
 });
-
-
-
-
 
 </script>
 
 
-<p>This is a description of the website.</p>
-<p>Total lines of code: {data.length}</p>
+<dl class="stats">
+    <dt>Total <abbr title="Lines of code">LOC</abbr></dt>
+    <dd>{data.length}</dd>
+    
+    <dt>Number of Files</dt>
+    <dd>{numberOfFiles}</dd>
 
+    <dt>Maximum File Length</dt>
+    <dd>{maxFileLength}</dd>
+
+    <dt>Average File length</dt>
+    <dd>{averageFileLength}</dd>
+  </dl>
 
