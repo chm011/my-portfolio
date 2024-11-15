@@ -10,17 +10,19 @@ import { onMount } from 'svelte';
 let data = [];
 
 onMount(async () => {
-    data = await d3.csv('static/loc.csv', (row) => ({
+    data = await d3.csv('loc.csv', (row) => ({
     ...row,
     line: Number(row.line), // or just +row.line
     depth: Number(row.depth),
     length: Number(row.length),
     date: new Date(row.date + 'T00:00' + row.timezone),
     datetime: new Date(row.datetime),
+
   }));
+  console.log(data)
 });
 
-console.log(data)
+
 
 
 
