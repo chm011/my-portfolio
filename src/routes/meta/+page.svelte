@@ -188,11 +188,11 @@ $: selectedCommits = brushSelection ? commits.filter(isCommitSelected) : [];
 $: hasSelection = brushSelection && selectedCommits.length > 0;
 
 let selectedLines = [];
-$: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
-  (d) => d.lines,
-  console.log("Selected lines:", selectedLines);
+  $: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
+    (d) => d.lines
+  );
 
-)
+  console.log("Selected lines:", selectedLines);
 
 let languageBreakdown;
 $: if (selectedLines.length > 0) {
