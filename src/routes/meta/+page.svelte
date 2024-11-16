@@ -155,9 +155,9 @@ let rScale;
 $: {
   const totalLinesExtent = d3.extent(commits, (d) => d.totalLines);
   rScale = d3
-    .scaleLinear()
-    .domain(totalLinesExtent) // min and max number of lines
-    .range([2, 30]); // min and max radius
+    .scaleSqrt()
+    .domain(totalLinesExtent) 
+    .range([2, 30]); 
 }
 
 
