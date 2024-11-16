@@ -36,8 +36,6 @@ usableArea.height = usableArea.bottom - usableArea.top;
 let xScale, yScale;
 let xAxis, yAxis;
 
-let hoveredIndex = -1;
-$: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -155,9 +153,7 @@ $: if (yScale) {
                 r="5"
                 fill="steelblue"
                 stroke="white"
-                stroke-width="1"></circle>
-            <circle on:mouseenter={evt => hoveredIndex = index} on:mouseleave={evt =>
-                    hoveredIndex = -1} />
+                stroke-width="1"/>
         {/each}
     {/if}
     </g>    
