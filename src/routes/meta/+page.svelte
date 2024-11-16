@@ -221,7 +221,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         padding: 1em;
         }
 
-    }
+    
     
     dl.info{
         display: grid;
