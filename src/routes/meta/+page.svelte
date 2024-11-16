@@ -169,10 +169,10 @@ function isCommitSelected(commit) {
 
     const x = xScale(commit.datetime);
     const y = yScale(commit.hourFrac);
-
-    return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
     console.log(`Commit ${commit.id}: x=${x}, y=${y}, selected=${x >= min.x && x <= max.x && y >= min.y && y <= max.y}`);
 
+    return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+    
   }}
 
 
