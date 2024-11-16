@@ -278,7 +278,8 @@ $: if (selectedLines.length > 0) {
     {#if languageBreakdown.length > 0}
       {#each languageBreakdown as { language, proportion }}
         <div>
-          {language}: {d3.format(".1%")(proportion)}
+          <dt>{language}</dt>
+          <dd> {d3.format(".1%")(proportion)} </dd>
         </div>
       {/each}
     {:else}
@@ -386,5 +387,24 @@ $: if (selectedLines.length > 0) {
     stroke-dasharray: 5 3;
     animation: marching-ants 2s linear infinite;
 }
+
+    .info.breakdown {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.5em;
+    margin: 0;
+    font-size: 10pt;
+    }
+
+    .breakdown dt {
+    font-weight: bold;
+    color: #aaa;
+    }
+
+    .breakdown dd {
+    margin: 0;
+    text-align: right;
+    }
+
 
 </style>
