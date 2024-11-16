@@ -163,7 +163,7 @@ $: if (yScale) {
     {/if}
     </g>    
 </svg>
-
+<!--
 <dl id="commit-tooltip" class="info tooltip">
     <dt>Commit</dt>
     <dd>
@@ -174,8 +174,8 @@ $: if (yScale) {
     <dd>{ hoveredCommit.datetime?.toLocaleString("en", {dateStyle: "full"}) }</dd>
   
     <!-- Add: Time, author, lines edited -->
-  </dl>
-
+  <!--</dl>
+-->
 <style>
     svg{
         overflow:visible;
