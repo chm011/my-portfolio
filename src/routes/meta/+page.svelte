@@ -10,6 +10,11 @@ import { onMount } from 'svelte';
 let data = [];
 let commits = [];
 
+let numberOfFiles = 0;
+let maxFileLength = 0;
+let longestFile = null;
+let averageFileLength = 0;
+
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
     ...row,
@@ -52,6 +57,8 @@ onMount(async () => {
   const fileGroups = d3.groups(data, (d) => d.file);
   numberOfFiles = fileGroups.length;
 
+  let totalFileLength = 0;
+
   fileGroups.forEach(([file, lines]) => {
       const fileLength = lines.length;
       if (fileLength > maxFileLength) {
@@ -82,5 +89,31 @@ onMount(async () => {
 
     <dt>Average File length</dt>
     <dd>{averageFileLength}</dd>
+
+    <dt>Longest File</dt>
+    <dd>{longestFile || 'N/A'}</dd>
+
   </dl>
 
+
+  <style>
+    .stats {
+      font-family: Arial, sans-serif;
+      margin: 1em 0;
+    }
+  
+    dt {
+      font-weight: bold;
+    }
+  
+    dd {
+      margin: 0 0 1em 0;
+      padding-left: 1em;
+    }
+  
+    abbr {
+      text-decoration: none;
+      border-bottom: 1px dotted;
+      cursor: help;
+    }
+  </style>
