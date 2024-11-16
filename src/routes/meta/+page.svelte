@@ -147,11 +147,8 @@ let brushSelection = null
 function brushed(evt) {
   const selection = evt.selection;
   if (selection) {
-    brushSelection = [
-      [selection[0][0], selection[0][1]],
-      [selection[1][0], selection[1][1]],
-    ];
-    console.log("Brush selection (pixels):", brushSelection);
+    brushSelection = selection;
+    console.log("Brush selection:", brushSelection);
   } else {
     brushSelection = null;
     console.log("Brush cleared");
@@ -208,6 +205,7 @@ $: hasSelection = brushSelection && selectedCommits.length > 0;
                     hoveredIndex = index;
                     cursor = {x: evt.x, y: evt.y};
                 }}
+                class:selected={isCommitSelected(commmit)}
            />
         {/each}
     {/if}
@@ -263,6 +261,11 @@ $: hasSelection = brushSelection && selectedCommits.length > 0;
     .dots circle:hover{
         transform: scale(1.5);
         opacity: 1;
+    }
+    .dots circle.selected{
+        fill: purple;
+        stroke: black;
+        stroke-width: 2;
     }
 
     .gridlines {
