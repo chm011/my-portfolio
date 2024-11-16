@@ -74,6 +74,7 @@ onMount(async () => {
       datetime,
       hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
       totalLines: lines.length,
+      language: dominantLanguage,
     };
 
     // Like ret.lines = lines
