@@ -147,7 +147,7 @@ $: {
     }
 }
 
-let brushSelection = null
+let brushSelection = null;
 
 function brushed(evt) {
   const selection = evt.selection;
