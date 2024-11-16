@@ -56,31 +56,31 @@ onMount(async () => {
 
     return ret;
     });
+});
     
-    $: totalLOC = d3.sum(data, (d) => d.line);
-    $: numberOfFiles = d3.groups(data, d => d.file).length;
+$: totalLOC = d3.sum(data, (d) => d.line);
+$: numberOfFiles = d3.groups(data, d => d.file).length;
     
-    $: fileLengths = d3.rollups(
-        data,
-        (v) => d3.max(v, (v) => v.line),
-        (d) => d.file,
-        );
+$: fileLengths = d3.rollups(
+    data,
+    (v) => d3.max(v, (v) => v.line),
+    (d) => d.file,
+    );
     
-    $: maxFileLength = d3.max(fileLengths, (d) => d[1])||0;
+$: maxFileLength = d3.max(fileLengths, (d) => d[1])||0;
     
-    $: averageFileLength = d3.mean(fileLengths, (d) => d[1])|| 0;
+$: averageFileLength = d3.mean(fileLengths, (d) => d[1])|| 0;
     
-    $: workByPeriod = d3.rollups(
+$: workByPeriod = d3.rollups(
         data,
         (v) => v.length,
         (d) => d.datetime.toLocaleString('en', { dayPeriod: 'short' }),
         );
     
-    $: maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
+$: maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
 
-});
 
-let stats = [
+$: stats = [
     { label: 'Total LOC', value: totalLOC },
     { label: 'Number of Files', value: numberOfFiles },
     { label: 'Maximum File Length', value: maxFileLength },
