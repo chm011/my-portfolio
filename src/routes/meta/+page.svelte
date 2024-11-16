@@ -160,10 +160,13 @@ function isCommitSelected(commit) {
     return false;
   }
 
-    const [min,max] = brushSelection;
-    const x = xScale(commit.dateTime);
-    const y = yScale(commit.hourFrac);
-    return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+  const [[xMin, yMin], [xMax, yMax]] = brushSelection.map(([x, y]) => [
+    xScale.invert(x),
+    yScale.invert(y),
+]);
+    const x = commit.dateTime;
+    const y = commit.hourFrac;
+    return x >= xMin && x <= xMax && y >= yMin && y <= yMax;
 }
 
 $: {
@@ -230,7 +233,7 @@ $: hasSelection = brushSelection && selectedCommits.length > 0;
 
   </dl>
 
-  <p>{hasSelection ? selectedCommits.length : "No"} commits selected</p>
+<p>{hasSelection ? selectedCommits.length : "No"} commits selected</p>
 
 <style>
     svg{
