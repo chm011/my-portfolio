@@ -272,9 +272,8 @@ $: if (selectedLines.length > 0) {
 
 <p>{hasSelection ? selectedCommits.length : "No"} commits selected</p>
 
-
+<h3>Language Breakdown</h3>
 <div class = "language">
-    <h3>Language Breakdown</h3>
     {#if languageBreakdown.length > 0}
       {#each languageBreakdown as { language, proportion }}
         <div class = "language-item">
