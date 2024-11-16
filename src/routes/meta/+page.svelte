@@ -169,15 +169,12 @@ function isCommitSelected(commit) {
 
     const x = xScale(commit.datetime);
     const y = yScale(commit.hourFrac);
-    console.log(`Commit ${commit.id}: x=${x}, y=${y}, selected=${x >= min.x && x <= max.x && y >= min.y && y <= max.y}`);
-
     return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
     
   }
 
   $: {
   if (brushSelection) {
-    console.log("Filtering commits based on brushSelection...");
     selectedCommits = commits.filter(isCommitSelected);
   } else {
     selectedCommits = [];
@@ -194,6 +191,22 @@ let selectedLines = [];
 $: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
   (d) => d.lines,
 );
+
+
+let languageBreakdown;
+$: if (selectedLines.length > 0) {
+    languageBreakdown = d3.rollups(
+        selectedLines,
+        (v) => v.length,
+        (d) => d.language,);
+
+        languageBreakdown = Array.from(languageBreakdown, ([language, count]) => [
+            language,
+            count/selectedLines.length,
+        ]);
+}else{
+    languageBreakdown  = [];
+}
 
 </script>
 <Stats {stats}/>
@@ -250,6 +263,17 @@ $: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
   </dl>
 
 <p>{hasSelection ? selectedCommits.length : "No"} commits selected</p>
+
+
+<div>
+    <h3>Language Breakdown</h3>
+    {#each languageBreakdown as [language, proportion]}
+      <div>
+        {language}: {d3.format(".1%")(proportion)}
+      </div>
+    {/each}
+  </div>
+
 
 <style>
     svg{
