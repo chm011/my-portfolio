@@ -22,7 +22,6 @@ let maxPeriod = null;
 let width = 1000,
     height = 600;
 
-let xScale, yScale;
 let margin = { top: 10, right: 10, bottom: 30, left: 20 };
 
 let usableArea = {
@@ -33,6 +32,29 @@ let usableArea = {
 };
 usableArea.width = usableArea.right - usableArea.left;
 usableArea.height = usableArea.bottom - usableArea.top;
+
+let xScale, yScale;
+let xAxis, yAxis;
+
+$: if (xScale && yscale){
+    const dataExtent = d3.extent(data, (d) => d.datetime);
+
+    xScale = d3
+        .scaleTime()
+        .domain(dataExtent)
+        .range([0, width])
+        .nice();
+        
+    yScale = d3
+        .scaleLinear()
+        .domain([0,24])
+        .range([height,0])
+    }
+
+$: if (xScale && yScale) {
+  d3.select(xAxis).call(d3.axisBottom(xScale));
+  d3.select(yAxis).call(d3.axisLeft(yScale));
+}
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -74,27 +96,7 @@ onMount(async () => {
     });
 });
 
-    $: if (data.length){
-    const dataExtent = d3.extent(data, (d) => d.datetime);
 
-    xScale = d3
-        .scaleTime()
-        .domain(dataExtent)
-        .range([0, width])
-        .nice();
-        
-    yScale = d3
-        .scaleLinear()
-        .domain([0,24])
-        .range([height,0])
-    }
-
-    let xAxis, yAxis;
-
-$: {
-  d3.select(xAxis).call(d3.axisBottom(xScale));
-  d3.select(yAxis).call(d3.axisLeft(yScale));
-}
 
 $: totalLOC = d3.sum(data, (d) => d.line);
 $: numberOfFiles = d3.groups(data, d => d.file).length;  
