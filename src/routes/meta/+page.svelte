@@ -405,13 +405,13 @@ $: if (selectedLines.length > 0) {
     }
 
     .language dt {
-    font-weight: bold;
-    color: #aaa;
+        text-transform: uppercase;
+        color: #aaa;
     }
 
     .language dd {
-    margin: 0;
-    text-align: right;
+        margin: 0;
+        text-align: right;
     }
 
 
