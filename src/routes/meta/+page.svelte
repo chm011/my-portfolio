@@ -170,7 +170,15 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
     <dt>Date</dt>
     <dd>{ hoveredCommit.datetime?.toLocaleString("en", {dateStyle: "full"}) }</dd>
   
-    <!-- Add: Time, author, lines edited -->
+    <dt>Time</dt>
+    <dd>{hoveredCommit.datetime?.toLocaleTimeString("en", { timeStyle: "short" })}</dd>
+  
+    <dt>Author</dt>
+    <dd>{hoveredCommit.author || "Unknown"}</dd>
+
+    <dt>Lines Edited</dt>
+    <dd>{hoveredCommit.totalLines || 0}</dd>
+    
   </dl>
 
 <style>
