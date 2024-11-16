@@ -141,6 +141,7 @@ $: stats = [
                 fill="steelblue"
                 stroke="white"
                 stroke-width="1"
+                on:mouseenter={() => console.log('cx:', xScale(commit.datetime), 'cy:', yScale(commit.hourFrac))}
             />
         {/each}
     {/if}
