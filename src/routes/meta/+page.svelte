@@ -214,6 +214,10 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         position: fixed;
         top:5em;
         left: 1em;
+        box-shadow: 3px 3px #aaa;
+        border-radius: 20px;
+        backdrop-filter: : blur(10px);
+
     }
     
     dl.info{
