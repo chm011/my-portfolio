@@ -145,15 +145,18 @@ let svg;
 let brushSelection = null
 
 function brushed(evt) {
-    const selection = evt.selection;
-    if (selection) {
-        brushSelection = selection;
-        console.log("Brush selection:", brushSelection);}
-        else{
-            brushSelection = null;
-            console.log("Brush cleared");
-        }
-    }
+  const selection = evt.selection;
+  if (selection) {
+    brushSelection = [
+      [selection[0][0], selection[0][1]],
+      [selection[1][0], selection[1][1]],
+    ];
+    console.log("Brush selection (pixels):", brushSelection);
+  } else {
+    brushSelection = null;
+    console.log("Brush cleared");
+  }
+}
 
 function isCommitSelected(commit) {
   if (!brushSelection) {
@@ -163,10 +166,12 @@ function isCommitSelected(commit) {
   const [[xMin, yMin], [xMax, yMax]] = brushSelection.map(([x, y]) => [
     xScale.invert(x),
     yScale.invert(y),
-]);
-    const x = commit.dateTime;
-    const y = commit.hourFrac;
-    return x >= xMin && x <= xMax && y >= yMin && y <= yMax;
+  ]);
+
+  const x = commit.datetime; 
+  const y = commit.hourFrac; 
+
+  return x >= xMin && x <= xMax && y >= yMin && y <= yMax;
 }
 
 $: {
@@ -179,8 +184,6 @@ $: {
 $: selectedCommits = brushSelection ? commits.filter(isCommitSelected) : [];
 $: hasSelection = brushSelection && selectedCommits.length > 0;
 
-console.log("xScale invert test:", xScale.invert(usableArea.left), xScale.invert(usableArea.right));
-console.log("yScale invert test:", yScale.invert(usableArea.top), yScale.invert(usableArea.bottom));
 </script>
 <Stats {stats}/>
 
