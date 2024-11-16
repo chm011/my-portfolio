@@ -163,7 +163,7 @@ function brushed(evt) {
 function isCommitSelected(commit) {
   if (!brushSelection) {
     return false;
-
+  }
     const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
     const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
 
@@ -173,7 +173,7 @@ function isCommitSelected(commit) {
 
     return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
     
-  }}
+  }
 
   $: {
   if (brushSelection) {
