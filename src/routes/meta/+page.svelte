@@ -87,6 +87,58 @@ $: stats = [
     { label: 'Average File Length', value: averageFileLength.toFixed(2) },
     { label: 'Period With Most Work', value: maxPeriod },
   ];
+
+
+let width = 1000,
+    height = 600;
+
+let xScale, yScale;
+    const dataExtent = d3.extent(data, (d) => d.datetime);
+
+    xScale = d3
+        .scaleTime()
+        .domain(dataExtent)
+        .range([0, width])
+        .nice();
+    
+    yScale = d3
+        .scaleLinear()
+        .domain([0,24])
+        .range([height,0])
 </script>
 
+<svg viewBox="0 0 {width} {height}">
+    <g class="dots"></g>
+    {if xScale && yScale}
+        {#each commits as commit, index}
+            <circle
+                cx={xScale(commit.datetime)}
+                cy={yScale(commit.hourFrac)}
+                r="5"
+                fill="steelblue"
+                stroke="white"
+                stroke-width="1"
+            />
+        {/each}
+    {/if}
+    </g>    
+</svg>
+
 <Stats {stats}/>
+
+<style>
+    svg{
+        overflow:visible;
+        border: 1px solid #ccc;
+    }
+
+    .dots circle{
+        opacity: 0.8;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .dots circle:hover{
+        transform: scale(1.5);
+        opacity: 1;
+    }
+</style>
