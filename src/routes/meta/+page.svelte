@@ -211,7 +211,8 @@ $: if (selectedLines.length > 0) {
         proportion: count / selectedLines.length,
 
     }));
-       
+    console.log("Formatted language breakdown:", languageBreakdown);
+
 } else {
     languageBreakdown = [];
 }
