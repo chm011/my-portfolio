@@ -192,7 +192,7 @@ let cursor = { x: 0, y: 0 };
     svg{
         overflow:visible;
         border: 1px solid #ccc;
-        margin-left:200px;
+        margin-left:50px;
     }
     circle{
         transition: 200ms;
