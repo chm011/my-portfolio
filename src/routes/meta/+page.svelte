@@ -123,12 +123,12 @@ $: if (xScale && yScale) {
   d3.select(xAxis).call(d3.axisBottom(xScale));
   d3.select(yAxis).call(d3.axisLeft(yScale));
 }
+
+let yAxisGridlines;
 $: if (yScale) {
-d3.select(yAxis).call(
-  d3
-    .axisLeft(yScale)
-    .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00'),
-);
+  d3.select(yAxisGridlines).call(
+    d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width),
+  );
 }
 
 </script>
@@ -139,6 +139,7 @@ d3.select(yAxis).call(
 <svg viewBox="0 0 {width} {height}">
     <g transform="translate(0, {height - margin.bottom})" bind:this={xAxis}></g>
     <g transform="translate({margin.left}, 0)" bind:this={yAxis}></g>
+    <g class="gridlines" transform="translate({usableArea.left}, 0)" bind:this="{yAxisGridlines}"/>
     <g class="dots">
     {#if xScale && yScale}
         {#each commits as commit, index}
@@ -172,4 +173,7 @@ d3.select(yAxis).call(
         transform: scale(1.5);
         opacity: 1;
     }
+    .gridlines {
+        stroke-opacity: 0.2;
+}
 </style>
