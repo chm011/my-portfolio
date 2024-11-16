@@ -228,11 +228,13 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
     }
 
     .info dt{
+        font-size: 10pt;
         font-weight: bold;
         color: #aaa;
     }
 
     .info dd{
+        font-size: 10pt;
         margin: 0;
     }
 </style>
