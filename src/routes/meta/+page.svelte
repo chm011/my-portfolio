@@ -110,13 +110,13 @@ $: if (data.length>0){
     xScale = d3
         .scaleTime()
         .domain(dataExtent)
-        .range([0, width])
+        .range([usableArea.left, usableArea.right])
         .nice();
         
     yScale = d3
         .scaleLinear()
         .domain([0,24])
-        .range([height,0])
+        .range([usableArea.bottom,usableArea.top])
     }
 
 $: if (xScale && yScale) {
@@ -141,8 +141,7 @@ $: if (xScale && yScale) {
                 fill="steelblue"
                 stroke="white"
                 stroke-width="1"
-                on:mouseenter={() => console.log('cx:', xScale(commit.datetime), 'cy:', yScale(commit.hourFrac))}
-            />
+           />
         {/each}
     {/if}
     </g>    
