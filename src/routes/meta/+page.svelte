@@ -217,6 +217,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         box-shadow: 3px 3px #aaa;
         border-radius: 20px;
         backdrop-filter: : blur(10px);
+        padding: 1em;
 
     }
     
