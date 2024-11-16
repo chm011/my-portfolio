@@ -12,10 +12,9 @@ let commits = [];
 
 let numberOfFiles = 0;
 let maxFileLength = 0;
-let longestFile = null;
 let averageFileLength = 0;
 let totalLOC = 0;
-let workByPeriod = 0
+let workByPeriod = [];
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -25,11 +24,11 @@ onMount(async () => {
     length: Number(row.length),
     date: new Date(row.date + 'T00:00' + row.timezone),
     datetime: new Date(row.datetime),
+}));
 
-  }));
-  commits = d3
-  .groups(data, (d) => d.commit)
-  .map(([commit, lines]) => {
+    commits = d3
+    .groups(data, (d) => d.commit)
+    .map(([commit, lines]) => {
     let first = lines[0];
     let { author, date, time, timezone, datetime } = first;
     let ret = {
@@ -54,27 +53,26 @@ onMount(async () => {
     });
 
     return ret;
-  });
-
-  const fileGroups = d3.groups(data, (d) => d.file);
-  numberOfFiles = d3.groups(data, d => d.file).length;
-
-
-  let totalFileLength = 0;
-
-  $: fileLengths = d3.rollups(
-  data,
-  (v) => d3.max(v, (v) => v.line),
-  (d) => d.file,
-  );
-
-  $: averageFileLength = d3.mean(fileLengths, (d) => d[1]);
+    });
     
-  $: workByPeriod = d3.rollups(
-  data,
-  (v) => v.length,
-  (d) => d.datetime.toLocaleString('en', { dayPeriod: 'short' }),
-);
+    const fileGroups = d3.groups(data, (d) => d.file);
+    numberOfFiles = d3.groups(data, d => d.file).length;
+    
+    $: fileLengths = d3.rollups(
+        data,
+        (v) => d3.max(v, (v) => v.line),
+        (d) => d.file,
+        );
+    
+    $: averageFileLength = d3.mean(fileLengths, (d) => d[1]);
+    
+    $: workByPeriod = d3.rollups(
+        data,
+        (v) => v.length,
+        (d) => d.datetime.toLocaleString('en', { dayPeriod: 'short' }),
+        );
+    
+    $: maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
 
 });
 
@@ -103,8 +101,8 @@ onMount(async () => {
     </div>
 
     <div class="stat-item">
-    <dt>Longest File</dt>
-    <dd>{longestFile || 'N/A'}</dd>
+    <dt>Period With Most Work</dt>
+    <dd>{maxPeriod}</dd>
     </div>
 
   </dl>
