@@ -135,6 +135,9 @@ $: if (yScale) {
 let hoveredIndex = -1;
 $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
+
+let cursor = { x: 0, y: 0 };
+
 </script>
 <Stats {stats}/>
 
@@ -155,6 +158,10 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
                 stroke="white"
                 stroke-width="1"
                 on:mouseenter={evt => hoveredIndex = index} on:mouseleave={evt => hoveredIndex = -1}
+                on:mouseenter={evt => {
+                    hoveredIndex = index;
+                    cursor = {x: evt.x, y: evt.y};
+                }}
            />
         {/each}
     {/if}
@@ -180,7 +187,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
     <dd>{hoveredCommit.totalLines || 0}</dd>
 
   </dl>
-
+  {JSON.stringify(cursor, null, "\t")}
 <style>
     svg{
         overflow:visible;
