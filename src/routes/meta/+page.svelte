@@ -155,15 +155,24 @@ $: if (yScale) {
                 r="5"
                 fill="steelblue"
                 stroke="white"
-                stroke-width="1"
-                on:mouseenter={evt => hoveredIndex = index} 
-                on:mouseleave={evt => hoveredIndex = -1}
-           />
+                stroke-width="1"></circle>
+            <circle on:mouseenter={evt => hoveredIndex = index} on:mouseleave={evt =>
+                    hoveredIndex = -1} />
         {/each}
     {/if}
     </g>    
 </svg>
-
+<dl id="commit-tooltip" class="info tooltip">
+    <dt>Commit</dt>
+    <dd>
+      <a href="{ hoveredCommit.url }" target="_blank">{ hoveredCommit.id }</a>
+    </dd>
+  
+    <dt>Date</dt>
+    <dd>{ hoveredCommit.datetime?.toLocaleString("en", {dateStyle: "full"}) }</dd>
+  
+    <!-- Add: Time, author, lines edited -->
+  </dl>
 
 <style>
     svg{
