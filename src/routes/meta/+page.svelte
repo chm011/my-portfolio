@@ -62,6 +62,8 @@ onMount(async () => {
 
   fileGroups.forEach(([file, lines]) => {
       const fileLength = lines.length;
+      totalFileLength += fileLength;
+      
       if (fileLength > maxFileLength) {
         maxFileLength = fileLength;
         longestFile = file;
