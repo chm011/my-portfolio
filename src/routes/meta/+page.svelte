@@ -266,4 +266,19 @@ $: {
         font-size: 10pt;
         margin: 0;
     }
+    
+    @keyframes marching-ants {
+        to {
+            stroke-dashoffset: -8; /* 5 + 3 */
+        }
+}
+
+    svg :global(.selection) {
+    fill-opacity: 10%;
+    stroke: black;
+    stroke-opacity: 70%;
+    stroke-dasharray: 5 3;
+    animation: marching-ants 2s linear infinite;
+}
+
 </style>
