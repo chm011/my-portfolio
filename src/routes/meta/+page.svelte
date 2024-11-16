@@ -63,7 +63,7 @@ onMount(async () => {
   fileGroups.forEach(([file, lines]) => {
       const fileLength = lines.length;
       totalFileLength += fileLength;
-      
+
       if (fileLength > maxFileLength) {
         maxFileLength = fileLength;
         longestFile = file;
@@ -134,5 +134,6 @@ onMount(async () => {
     font-size: 1.6em;
     font-weight: bold;
     color: #000; 
-    margin: 0; 
-  </style>
+    margin: 0; }
+    
+</style>
