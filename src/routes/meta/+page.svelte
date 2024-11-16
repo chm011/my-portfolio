@@ -273,11 +273,11 @@ $: if (selectedLines.length > 0) {
 <p>{hasSelection ? selectedCommits.length : "No"} commits selected</p>
 
 
-<div>
+<div class = "language">
     <h3>Language Breakdown</h3>
     {#if languageBreakdown.length > 0}
       {#each languageBreakdown as { language, proportion }}
-        <div>
+        <div class = "language-item">
           <dt>{language}</dt>
           <dd> {d3.format(".1%")(proportion)} </dd>
         </div>
@@ -388,20 +388,28 @@ $: if (selectedLines.length > 0) {
     animation: marching-ants 2s linear infinite;
 }
 
-    .info.breakdown {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 0.5em;
-    margin: 0;
-    font-size: 10pt;
+    .language {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1em;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        padding: 1em;
+  }
+    .language-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .breakdown dt {
+    .language dt {
     font-weight: bold;
     color: #aaa;
     }
 
-    .breakdown dd {
+    .language dd {
     margin: 0;
     text-align: right;
     }
