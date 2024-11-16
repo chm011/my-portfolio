@@ -101,23 +101,36 @@ onMount(async () => {
 
 
   <style>
-    .stats {
-      font-family: Arial, sans-serif;
-      margin: 1em 0;
-    }
-  
-    dt {
-      font-weight: bold;
-    }
-  
-    dd {
-      margin: 0 0 1em 0;
-      padding-left: 1em;
-    }
-  
-    abbr {
-      text-decoration: none;
-      border-bottom: 1px dotted;
-      cursor: help;
-    }
+    .summary-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+
+  .stats-summary {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2em;
+    text-align: center;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-label {
+    font-size: 0.9em;
+    color: #6c757d; 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3em;
+  }
+
+  .stat-value {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #000; 
+  }
   </style>
