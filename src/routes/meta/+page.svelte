@@ -128,7 +128,7 @@ let yAxisGridlines;
 $: if (yScale) {
   d3.select(yAxisGridlines).call(
     d3.axisLeft(yScale)
-    .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00'),
+    .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00')
     .tickSize(-usableArea.width),
   );
 }
@@ -139,7 +139,7 @@ $: if (yScale) {
 
 <h3> Commits by Time of Day </h3>
 <svg viewBox="0 0 {width} {height}">
-    <g class="gridlines" transform="translate({usableArea.left}, 0)" bind:this="{yAxisGridlines}"/>
+    <g class="gridlines" transform="translate({usableArea.left}, 0)" bind:this="{yAxisGridlines}"></g>
     <g transform="translate(0, {height - margin.bottom})" bind:this={xAxis}></g>
     <g transform="translate({margin.left}, 0)" bind:this={yAxis}></g>
     <g class="dots">
