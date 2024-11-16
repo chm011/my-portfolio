@@ -158,17 +158,6 @@ $: if (yScale) {
     {/if}
     </g>    
 </svg>
-<dl id="commit-tooltip" class="info tooltip">
-    <dt>Commit</dt>
-    <dd>
-      <a href="{ hoveredCommit.url }" target="_blank">{ hoveredCommit.id }</a>
-    </dd>
-  
-    <dt>Date</dt>
-    <dd>{ hoveredCommit.datetime?.toLocaleString("en", {dateStyle: "full"}) }</dd>
-  
-    <!-- Add: Time, author, lines edited -->
-  </dl>
 
 <style>
     svg{
