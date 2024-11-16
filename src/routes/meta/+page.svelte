@@ -185,6 +185,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
     svg{
         overflow:visible;
         border: 1px solid #ccc;
+        margin-left:200px;
     }
     circle{
         transition: 200ms;
