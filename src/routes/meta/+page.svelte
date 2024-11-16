@@ -156,8 +156,8 @@ $: if (yScale) {
                 fill="steelblue"
                 stroke="white"
                 stroke-width="1"
-                on:mouseenter={(evt) => hoveredIndex = index} 
-                on:mouseleave={() => hoveredIndex = -1}
+                on:mouseenter={evt => hoveredIndex = index} 
+                on:mouseleave={evt => hoveredIndex = -1}
            />
         {/each}
     {/if}
