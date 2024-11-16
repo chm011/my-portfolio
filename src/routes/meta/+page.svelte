@@ -182,6 +182,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
     .dots circle{
         opacity: 0.8;
         transition: transform 0.2s, opacity 0.2s;
+        transition: 200ms
     }
 
     .dots circle:hover{
@@ -190,5 +191,11 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
     }
     .gridlines {
         stroke-opacity: 0.2;
-}
+    }
+
+    &:hover{
+        transform: scale(1.5);
+        transform-origin: center;
+        transform-box: fill-box;
+    }
 </style>
