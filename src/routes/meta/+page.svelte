@@ -187,7 +187,7 @@ let cursor = { x: 0, y: 0 };
     <dd>{hoveredCommit.totalLines || 0}</dd>
 
   </dl>
-  {JSON.stringify(cursor, null, "\t")}
+
 <style>
     svg{
         overflow:visible;
@@ -221,7 +221,7 @@ let cursor = { x: 0, y: 0 };
     .tooltip{
         position: fixed;
         top:5em;
-        left: 1em;
+        left: 0.5em;
         background-color: #e0e0e0;
         box-shadow: 1px 1px rgb(133, 133, 133);
         border-radius: 20px;
@@ -229,7 +229,6 @@ let cursor = { x: 0, y: 0 };
         padding: 1em;
         }
 
-    
     
     dl.info{
         display: grid;
@@ -243,7 +242,6 @@ let cursor = { x: 0, y: 0 };
             opacity: 0;
             visibility: hidden;}
   }
-        
         
 
     .info dt{
