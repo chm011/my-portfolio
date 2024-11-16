@@ -123,9 +123,17 @@ $: if (xScale && yScale) {
   d3.select(xAxis).call(d3.axisBottom(xScale));
   d3.select(yAxis).call(d3.axisLeft(yScale));
 }
-
+$: if (yScale) {
+d3.select(yAxis).call(
+  d3
+    .axisLeft(yScale)
+    .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00'),
+);
+}
 
 </script>
+<Stats {stats}/>
+
 
 <h3> Commits by Time of Day </h3>
 <svg viewBox="0 0 {width} {height}">
@@ -147,7 +155,7 @@ $: if (xScale && yScale) {
     </g>    
 </svg>
 
-<Stats {stats}/>
+
 
 <style>
     svg{
