@@ -197,18 +197,21 @@ let selectedLines = [];
 
 let languageBreakdown;
 $: if (selectedLines.length > 0) {
-    languageBreakdown = d3.rollups(
+    
+    const rawBreakdown = d3.rollups(
         selectedLines,
         (v) => v.length,
-        (d) => d.language || 'Unknown');
-    
-    $: console.log("Language breakdown:", languageBreakdown);
-    $: console.log("Selected lines:", selectedLines);
+        (d) => d.language || 'Unknown'
+    );
 
-    languageBreakdown = Array.from(languageBreakdown, ([language, count]) => ({
-        language,
+    console.log("Raw breakdown:", rawBreakdown);
+
+    languageBreakdown = rawBreakdown.map(([language,count]) => ({
+        language, 
         proportion: count / selectedLines.length,
-}));
+
+    }));
+       
 } else {
     languageBreakdown = [];
 }
