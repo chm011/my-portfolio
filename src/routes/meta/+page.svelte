@@ -15,6 +15,7 @@ let maxFileLength = 0;
 let longestFile = null;
 let averageFileLength = 0;
 let totalLOC = 0;
+let workByPeriod = 0
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -56,22 +57,24 @@ onMount(async () => {
   });
 
   const fileGroups = d3.groups(data, (d) => d.file);
-  numberOfFiles = fileGroups.length;
+  numberOfFiles = d3.groups(data, d => d.file).length;
+
 
   let totalFileLength = 0;
 
-  fileGroups.forEach(([file, lines]) => {
-      const fileLength = lines.length;
-      totalFileLength += fileLength;
+  $: fileLengths = d3.rollups(
+  data,
+  (v) => d3.max(v, (v) => v.line),
+  (d) => d.file,
+  );
 
-      if (fileLength > maxFileLength) {
-        maxFileLength = fileLength;
-        longestFile = file;
-      }
-    });
+  $: averageFileLength = d3.mean(fileLengths, (d) => d[1]);
     
-    averageFileLength = numberOfFiles > 0 ? totalFileLength / numberOfFiles : 0;
-
+  $: workByPeriod = d3.rollups(
+  data,
+  (v) => v.length,
+  (d) => d.datetime.toLocaleString('en', { dayPeriod: 'short' }),
+);
 
 });
 
