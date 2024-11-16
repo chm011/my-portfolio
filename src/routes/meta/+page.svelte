@@ -173,6 +173,10 @@ $: {
     }
 }
 
+$: selectedCommits = brushSelection ? commits.filter(isCommitSelected) : [];
+$: hasSelection = brushSelection && selectedCommits.length > 0;
+
+
 </script>
 <Stats {stats}/>
 
@@ -225,6 +229,8 @@ $: {
     <dd>{hoveredCommit.totalLines || 0}</dd>
 
   </dl>
+
+  <p>{hasSelection ? selectedCommits.length : "No"} commits selected</p>
 
 <style>
     svg{
