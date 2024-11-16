@@ -276,12 +276,17 @@ $: if (selectedLines.length > 0) {
 
 <div>
     <h3>Language Breakdown</h3>
-    {#each languageBreakdown as [language, proportion]}
-      <div>
-        {language}: {d3.format(".1%")(proportion)}
-      </div>
-    {/each}
+    {#if languageBreakdown.length > 0}
+      {#each languageBreakdown as { language, proportion }}
+        <div>
+          {language}: {d3.format(".1%")(proportion)}
+        </div>
+      {/each}
+    {:else}
+      <p>No language data available.</p>
+    {/if}
   </div>
+  
 
 
 <style>
