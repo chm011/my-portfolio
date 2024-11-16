@@ -111,8 +111,11 @@ onMount(async () => {
   .stats{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 2em;
+    gap: 1em;
     text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
   }
 
   .stat-item {
@@ -123,7 +126,7 @@ onMount(async () => {
 
 
   dt {
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #6c757d;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -131,9 +134,9 @@ onMount(async () => {
   }
 
   dd {
-    font-size: 1.6em;
+    font-size: 1.2em;
     font-weight: bold;
     color: #000; 
     margin: 0; }
-    
+
 </style>
