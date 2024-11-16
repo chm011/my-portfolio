@@ -205,7 +205,7 @@ $: hasSelection = brushSelection && selectedCommits.length > 0;
                     hoveredIndex = index;
                     cursor = {x: evt.x, y: evt.y};
                 }}
-                class:selected={isCommitSelected(commmit)}
+                class:selected={isCommitSelected(commit)}
            />
         {/each}
     {/if}
