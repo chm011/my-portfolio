@@ -140,7 +140,12 @@ let cursor = { x: 0, y: 0 };
 
 
 let svg;
-
+$: {
+    if (svg){
+        d3.select(svg).call(d3.brush().on('start brush end', brushed));
+        d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
+    }
+}
 
 let brushSelection = null
 
@@ -171,15 +176,15 @@ function isCommitSelected(commit) {
   return x >= xMin && x <= xMax && y >= yMin && y <= yMax;
 }
 
-$: {
-    if (svg){
-        d3.select(svg).call(d3.brush().on('start brush end', brushed));
-        d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
-    }
-}
+
 
 $: selectedCommits = brushSelection ? commits.filter(isCommitSelected) : [];
 $: hasSelection = brushSelection && selectedCommits.length > 0;
+
+let selectedLines = [];
+$: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
+  (d) => d.lines,
+);
 
 </script>
 <Stats {stats}/>
