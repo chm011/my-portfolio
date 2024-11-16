@@ -18,6 +18,14 @@ let averageFileLength = 0;
 let workByPeriod = [];
 let maxPeriod = null;
 
+
+let width = 1000,
+    height = 600;
+
+let xScale, yScale;
+
+
+
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
     ...row,
@@ -56,26 +64,37 @@ onMount(async () => {
 
     return ret;
     });
-    
+});
+
+    $: if (data.length){
+    const dataExtent = d3.extent(data, (d) => d.datetime);
+
+    xScale = d3
+        .scaleTime()
+        .domain(dataExtent)
+        .range([0, width])
+        .nice();
+        
+    yScale = d3
+        .scaleLinear()
+        .domain([0,24])
+        .range([height,0])
+    }
+
 $: totalLOC = d3.sum(data, (d) => d.line);
-$: numberOfFiles = d3.groups(data, d => d.file).length;
-    
+$: numberOfFiles = d3.groups(data, d => d.file).length;  
 $: fileLengths = d3.rollups(
     data,
     (v) => d3.max(v, (v) => v.line),
     (d) => d.file,
     );
-    
 $: maxFileLength = d3.max(fileLengths, (d) => d[1])||0;
-    
-$: averageFileLength = d3.mean(fileLengths, (d) => d[1])|| 0;
-    
+$: averageFileLength = d3.mean(fileLengths, (d) => d[1])|| 0;  
 $: workByPeriod = d3.rollups(
         data,
         (v) => v.length,
         (d) => d.datetime.toLocaleString('en', { dayPeriod: 'short' }),
         );
-    
 $: maxPeriod = d3.greatest(workByPeriod, (d) => d[1])?.[0];
 
 
@@ -88,30 +107,13 @@ $: stats = [
   ];
 
 
-let width = 1000,
-    height = 600;
-
-let xScale, yScale;
-const dataExtent = d3.extent(data, (d) => d.datetime);
-
-xScale = d3
-    .scaleTime()
-    .domain(dataExtent)
-    .range([0, width])
-    .nice();
-    
-yScale = d3
-    .scaleLinear()
-    .domain([0,24])
-    .range([height,0])
-});
 
 </script>
 
 <h3> Commits by Time of Day </h3>
 <svg viewBox="0 0 {width} {height}">
     <g class="dots">
-    {if xScale && yScale}
+    {#if xScale && yScale}
         {#each commits as commit, index}
             <circle
                 cx={xScale(commit.datetime)}
