@@ -210,7 +210,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         stroke-opacity: 0.2;
     }
 
-    .tooltip{
+    #commit-tooltip{
         position: fixed;
         top:5em;
         left: 1em;
