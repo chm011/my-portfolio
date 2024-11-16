@@ -7,6 +7,7 @@
 import * as d3 from 'd3';
 import { onMount } from 'svelte';
 import Stats from '$lib/stats.svelte';
+import Pie from '$lib/Pie.svelte';
 
 let data = [];
 let commits = [];
@@ -213,6 +214,7 @@ $: if (selectedLines.length > 0) {
     languageBreakdown = [];
 }
 
+
 </script>
 <Stats {stats}/>
 
@@ -283,6 +285,7 @@ $: if (selectedLines.length > 0) {
     {/if}
   </div>
   
+  <Pie data={Array.from(languageBreakdown).map(([language, lines]) => ({label: language, value: lines}))} />
 <style>
     svg{
         overflow:visible;
