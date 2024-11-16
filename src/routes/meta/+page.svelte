@@ -14,6 +14,7 @@ let numberOfFiles = 0;
 let maxFileLength = 0;
 let longestFile = null;
 let averageFileLength = 0;
+let totalLOC = 0;
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -69,7 +70,7 @@ onMount(async () => {
     
     averageFileLength = numberOfFiles > 0 ? totalFileLength / numberOfFiles : 0;
 
-
+    totalLOC = data.reduce((sum, row) => sum + row.line, 0);
 
 
 });
@@ -92,6 +93,9 @@ onMount(async () => {
 
     <dt>Longest File</dt>
     <dd>{longestFile || 'N/A'}</dd>
+
+    <dt>Total LOC</dt>
+    <dd>{totalLOC}</dd>
 
   </dl>
 
