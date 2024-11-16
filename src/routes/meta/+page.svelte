@@ -150,6 +150,17 @@ $: {
     }
 }
 
+
+let rScale;
+$: {
+  const totalLinesExtent = d3.extent(commits, (d) => d.totalLines);
+  rScale = d3
+    .scaleLinear()
+    .domain(totalLinesExtent) // min and max number of lines
+    .range([2, 30]); // min and max radius
+}
+
+
 let brushSelection = null;
 
 function brushed(evt) {
@@ -231,7 +242,7 @@ $: if (selectedLines.length > 0) {
             <circle
               cx={xScale(commit.datetime)}
               cy={yScale(commit.hourFrac)}
-              r="5"
+              r={rScale(commit.totalLines)}
               fill="steelblue"
               stroke="white"
               stroke-width="1"
@@ -323,6 +334,7 @@ $: if (selectedLines.length > 0) {
     }
 
     .dots circle:hover{
+        fill-opacity: 1;
         transform: scale(1.5);
         opacity: 1;
     }
