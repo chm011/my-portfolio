@@ -175,7 +175,16 @@ function isCommitSelected(commit) {
     
   }}
 
+  $: {
+  if (brushSelection) {
+    console.log("Filtering commits based on brushSelection...");
+    selectedCommits = commits.filter(isCommitSelected);
+  } else {
+    selectedCommits = [];
+  }
+}
 
+$: console.log("Selected commits:", selectedCommits);
 
 
 $: selectedCommits = brushSelection ? commits.filter(isCommitSelected) : [];
