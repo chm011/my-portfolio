@@ -148,7 +148,7 @@ $: if (svg){
 
 
 <h3> Commits by Time of Day </h3>
-<svg viewBox="0 0 {width} {height}">
+<svg viewBox="0 0 {width} {height}" bind:this={svg}>
     <g class="gridlines" transform="translate({usableArea.left}, 0)" bind:this="{yAxisGridlines}"></g>
     <g transform="translate(0, {height - margin.bottom})" bind:this={xAxis}></g>
     <g transform="translate({margin.left}, 0)" bind:this={yAxis}></g>
