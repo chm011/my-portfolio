@@ -228,13 +228,6 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         grid-template-columns: auto auto; 
         gap:0.5em;
         margin:0;
-
-        transition-duration: 500ms;
-        transition-property: opacity, visibility;
-
-        &[hidden]:not(:hover, :focus-within){
-            opacity: 0;
-            visibility: hidden;
     }
 
     .info dt{
