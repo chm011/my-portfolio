@@ -52,6 +52,18 @@ onMount(async () => {
     .map(([commit, lines]) => {
     let first = lines[0];
     let { author, date, time, timezone, datetime } = first;
+
+    let languageCounts = d3.rollup(
+                lines,
+                (v) => v.length,
+                (d) => d.language || 'Unknown'
+            );
+
+    let dominantLanguage = Array.from(languageCounts).reduce(
+        (a, b) => (b[1] > a[1] ? b : a),
+        ['Unknown', 0]
+        )[0];
+
     let ret = {
       id: commit,
       url: 'https://github.com/vis-society/lab-7/commit/' + commit,
