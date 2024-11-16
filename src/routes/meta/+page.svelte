@@ -214,7 +214,8 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         position: fixed;
         top:5em;
         left: 1em;
-        box-shadow: 1px 1px #aaa;
+        background-color: #aaa;
+        box-shadow: 1px 1px rgb(133, 133, 133);
         border-radius: 20px;
         backdrop-filter: : blur(10px);
         padding: 1em;
@@ -228,12 +229,11 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         gap:0.5em;
         margin:0;
 
-
         transition-duration: 500ms;
         transition-property: opacity, visibility;
-        
+
         &[hidden]:not(:hover, :focus-within){
-            opacit: 0;
+            opacity: 0;
             visibility: hidden;
     }
 
