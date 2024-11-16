@@ -182,7 +182,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         transition: 200ms;
     }
 
-    &:hover {
+    circle:hover {
     transform: scale(1.5);
     }
 
