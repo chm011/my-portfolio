@@ -149,20 +149,27 @@ $: {
 
 
 function brushed(evt) {
-    console.log(evt);
-}
+    const selection = evt.selection;
+    if (selection) {
+        d3.brushSelection = selection;
+        console.log("Brush selection:", brushSelection);}
+        else{
+            brushSelection = null;
+            console.log("Brush cleared");
+        }
+    }
 
 function isCommitSelected(commit) {
   if (!brushSelection) {
     return false;
   }
-  
-let min = { x: brushSelection[0][0], y: brushSelection[0][1] };
-let max = { x: brushSelection[1][0], y: brushSelection[1][1] };
-let x = xScale(commit.date);
-let y = yScale(commit.hourFrac);
-return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
 
+    const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+    const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+    const x = xScale(commit.date);
+    const y = yScale(commit.hourFrac);
+    return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+}
 
 </script>
 <Stats {stats}/>
