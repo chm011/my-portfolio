@@ -79,35 +79,36 @@ onMount(async () => {
 
 
 <dl class="stats">
+    <div class="stat-item">
     <dt>Total <abbr title="Lines of code">LOC</abbr></dt>
     <dd>{data.length}</dd>
+    </div>
     
+    <div class="stat-item">
     <dt>Number of Files</dt>
     <dd>{numberOfFiles}</dd>
-
+    </div>
+    
+    <div class="stat-item">
     <dt>Maximum File Length</dt>
     <dd>{maxFileLength}</dd>
+    </div>  
 
+    <div class="stat-item">
     <dt>Average File length</dt>
     <dd>{averageFileLength}</dd>
+    </div>
 
+    <div class="stat-item">
     <dt>Longest File</dt>
     <dd>{longestFile || 'N/A'}</dd>
-
-    <dt>Total LOC</dt>
-    <dd>{totalLOC}</dd>
+    </div>
 
   </dl>
 
 
   <style>
-    .summary-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 1em;
-  }
-
-  .stats-summary {
+  .stats{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 2em;
@@ -120,17 +121,18 @@ onMount(async () => {
     align-items: center;
   }
 
-  .stat-label {
+
+  dt {
     font-size: 0.9em;
-    color: #6c757d; 
+    color: #6c757d;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.3em;
   }
 
-  .stat-value {
+  dd {
     font-size: 1.6em;
     font-weight: bold;
     color: #000; 
-  }
+    margin: 0; 
   </style>
