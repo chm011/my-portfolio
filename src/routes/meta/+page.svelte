@@ -139,10 +139,12 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 let cursor = { x: 0, y: 0 };
 
 
-$:{
+$: {
+    if (svg){
  d3.select(svg).call(d3.brush());
  d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
-}
+    }}
+
 
 </script>
 <Stats {stats}/>
