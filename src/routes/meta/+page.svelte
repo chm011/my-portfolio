@@ -141,6 +141,7 @@ let cursor = { x: 0, y: 0 };
 let svg;
 $: if (svg){
  d3.select(svg).call(d3.brush());
+ d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
 }
 
 </script>
