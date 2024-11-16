@@ -138,10 +138,6 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
 let cursor = { x: 0, y: 0 };
 
-function brushed(evt) {
-    console.log(evt);
-}
-
 
 let svg;
 $: {
@@ -150,6 +146,22 @@ $: {
         d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
     }
 }
+
+
+function brushed(evt) {
+    console.log(evt);
+}
+
+function isCommitSelected(commit) {
+  if (!brushSelection) {
+    return false;
+  }
+  
+let min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+let max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+let x = xScale(commit.date);
+let y = yScale(commit.hourFrac);
+return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
 
 
 </script>
