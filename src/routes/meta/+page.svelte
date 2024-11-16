@@ -178,7 +178,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         overflow:visible;
         border: 1px solid #ccc;
     }
-    cirle{
+    circle{
         transition: 200ms;
     }
 
