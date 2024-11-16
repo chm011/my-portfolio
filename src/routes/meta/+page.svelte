@@ -6,15 +6,17 @@
 <script>
 import * as d3 from 'd3';
 import { onMount } from 'svelte';
+import Stats from '$lib/stats.svelte';
 
 let data = [];
 let commits = [];
 
+let totalLOC = 0;
 let numberOfFiles = 0;
 let maxFileLength = 0;
 let averageFileLength = 0;
-let totalLOC = 0;
 let workByPeriod = [];
+let maxPeriod = null;
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -55,8 +57,8 @@ onMount(async () => {
     return ret;
     });
     
-    const fileGroups = d3.groups(data, (d) => d.file);
-    numberOfFiles = d3.groups(data, d => d.file).length;
+    $: totalLOC = d3.sum(data, (d) => d.line);
+    $: numberOfFiles = d3.groups(data, d => d.file).length;
     
     $: fileLengths = d3.rollups(
         data,
@@ -64,7 +66,9 @@ onMount(async () => {
         (d) => d.file,
         );
     
-    $: averageFileLength = d3.mean(fileLengths, (d) => d[1]);
+    $: maxFileLength = d3.max(fileLengths, (d) => d[1])||0;
+    
+    $: averageFileLength = d3.mean(fileLengths, (d) => d[1])|| 0;
     
     $: workByPeriod = d3.rollups(
         data,
@@ -76,68 +80,13 @@ onMount(async () => {
 
 });
 
+let stats = [
+    { label: 'Total LOC', value: totalLOC },
+    { label: 'Number of Files', value: numberOfFiles },
+    { label: 'Maximum File Length', value: maxFileLength },
+    { label: 'Average File Length', value: averageFileLength.toFixed(2) },
+    { label: 'Period With Most Work', value: maxPeriod },
+  ];
 </script>
 
-
-<dl class="stats">
-    <div class="stat-item">
-    <dt>Total <abbr title="Lines of code">LOC</abbr></dt>
-    <dd>{data.length}</dd>
-    </div>
-    
-    <div class="stat-item">
-    <dt>Number of Files</dt>
-    <dd>{numberOfFiles}</dd>
-    </div>
-    
-    <div class="stat-item">
-    <dt>Maximum File Length</dt>
-    <dd>{maxFileLength}</dd>
-    </div>  
-
-    <div class="stat-item">
-    <dt>Average File length</dt>
-    <dd>{averageFileLength}</dd>
-    </div>
-
-    <div class="stat-item">
-    <dt>Period With Most Work</dt>
-    <dd>{maxPeriod}</dd>
-    </div>
-
-  </dl>
-
-
-  <style>
-  .stats{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1em;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-  dt {
-    font-size: 0.8em;
-    color: #6c757d;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.3em;
-  }
-
-  dd {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #000; 
-    margin: 0; }
-
-</style>
+<Stats {stats}/>
