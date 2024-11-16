@@ -210,14 +210,15 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         stroke-opacity: 0.2;
     }
 
-    #commit-tooltip{
+    .tooltip{
         position: fixed;
         top:5em;
         left: 1em;
-        box-shadow: 3px 3px #aaa;
+        box-shadow: 1px 1px #aaa;
         border-radius: 20px;
         backdrop-filter: : blur(10px);
         padding: 1em;
+        }
 
     }
     
@@ -226,6 +227,14 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         grid-template-columns: auto auto; 
         gap:0.5em;
         margin:0;
+
+
+        transition-duration: 500ms;
+        transition-property: opacity, visibility;
+        
+        &[hidden]:not(:hover, :focus-within){
+            opacit: 0;
+            visibility: hidden;
     }
 
     .info dt{
