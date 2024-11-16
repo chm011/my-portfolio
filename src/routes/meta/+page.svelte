@@ -204,7 +204,6 @@ $: {
     svg{
         overflow:visible;
         border: 1px solid #ccc;
-        margin-left:50px;
     }
     circle{
         transition: 200ms;
