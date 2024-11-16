@@ -3,8 +3,7 @@
 </svelte:head>
 <h2>Meta</h2>
 
-<script>
-import { computePosition, autoPlacement, offset } from '@floating-ui/dom';    
+<script>   
 import * as d3 from 'd3';
 import { onMount } from 'svelte';
 import Stats from '$lib/stats.svelte';
@@ -138,7 +137,10 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
 
 let cursor = { x: 0, y: 0 };
-let commitTooltip;
+
+$: if (svg){
+ d3.select(svg).call(d3.brush());
+}
 
 </script>
 <Stats {stats}/>
@@ -173,8 +175,7 @@ let commitTooltip;
 <dl id="commit-tooltip" 
     class="info tooltip" 
     hidden={hoveredIndex === -1} 
-    style="top: {cursor.y}px; left: {cursor.x}px"
-    bind:this="{commitTooltip}">
+    style="top: {cursor.y}px; left: {cursor.x}px">
     <dt>Commit</dt>
     <dd>
       <a href="{ hoveredCommit.url }" target="_blank">{ hoveredCommit.id }</a>
@@ -230,7 +231,7 @@ let commitTooltip;
         left: 0.5em;
         background-color: #e0e0e0;
         box-shadow: 1px 1px rgb(133, 133, 133);
-        border-radius: 20px;
+        border-radius: 5px;
         backdrop-filter: : blur(10px);
         padding: 1em;
         }
