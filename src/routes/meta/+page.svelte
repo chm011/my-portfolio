@@ -204,14 +204,11 @@ $: if (selectedLines.length > 0) {
         (d) => d.language || 'Unknown'
     );
 
-    console.log("Raw breakdown:", rawBreakdown);
-
     languageBreakdown = rawBreakdown.map(([language,count]) => ({
         language, 
         proportion: count / selectedLines.length,
 
     }));
-    console.log("Formatted language breakdown:", languageBreakdown);
 
 } else {
     languageBreakdown = [];
@@ -287,8 +284,6 @@ $: if (selectedLines.length > 0) {
     {/if}
   </div>
   
-
-
 <style>
     svg{
         overflow:visible;
