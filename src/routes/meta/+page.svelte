@@ -291,13 +291,15 @@ $: if (selectedLines.length > 0) {
       <Pie
         data={languageBreakdown.map(({ language, proportion }) => ({
           label: language,
-          value: proportion,
+          value: count,
         }))}
       />
     {:else}
       <p>No data available for the pie chart.</p>
     {/if}
 </div>
+
+
 <style>
     svg{
         overflow:visible;
