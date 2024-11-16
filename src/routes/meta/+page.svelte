@@ -206,6 +206,7 @@ $: if (selectedLines.length > 0) {
 
     languageBreakdown = rawBreakdown.map(([language,count]) => ({
         language, 
+        count,
         proportion: count / selectedLines.length,
 
     }));
