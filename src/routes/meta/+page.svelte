@@ -163,18 +163,18 @@ function brushed(evt) {
 function isCommitSelected(commit) {
   if (!brushSelection) {
     return false;
-  }
 
-  const [[xMin, yMin], [xMax, yMax]] = brushSelection.map(([x, y]) => [
-    xScale.invert(x),
-    yScale.invert(y),
-  ]);
+    const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+    const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
 
-  const x = commit.datetime; 
-  const y = commit.hourFrac; 
+    const x = xScale(commit.datetime);
+    const y = yScale(commit.hourFrac);
 
-  return x >= xMin && x <= xMax && y >= yMin && y <= yMax;
-}
+    return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+    console.log(`Commit ${commit.id}: x=${x}, y=${y}, selected=${x >= min.x && x <= max.x && y >= min.y && y <= max.y}`);
+
+  }}
+
 
 
 
@@ -208,8 +208,7 @@ $: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
                 on:mouseenter={evt => hoveredIndex = index} on:mouseleave={evt => hoveredIndex = -1}
                 on:mouseenter={evt => {
                     hoveredIndex = index;
-                    cursor = {x: evt.x, y: evt.y};
-                }}
+                    cursor = {x: evt.x, y: evt.y};}}
                 class:selected={isCommitSelected(commit)}
            />
         {/each}
