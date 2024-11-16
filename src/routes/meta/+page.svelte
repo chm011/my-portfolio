@@ -70,8 +70,6 @@ onMount(async () => {
     
     averageFileLength = numberOfFiles > 0 ? totalFileLength / numberOfFiles : 0;
 
-    totalLOC = data.reduce((sum, row) => sum + row.line, 0);
-
 
 });
 
