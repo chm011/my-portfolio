@@ -138,10 +138,15 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
 let cursor = { x: 0, y: 0 };
 
+function brushed(evt) {
+    console.log(evt);
+}
+
+
 let svg;
 $: {
     if (svg){
-        d3.select(svg).call(d3.brush());
+        d3.select(svg).call(d3.brush().on('start brush end', brushed));
         d3.select(svg).selectAll('.dots, .overlay ~ *').raise();
     }
 }
