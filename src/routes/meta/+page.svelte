@@ -36,7 +36,6 @@ usableArea.height = usableArea.bottom - usableArea.top;
 let xScale, yScale;
 let xAxis, yAxis;
 
-
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
     ...row,
@@ -133,7 +132,8 @@ $: if (yScale) {
   );
 }
 
-
+let hoveredIndex = -1;
+$: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
 </script>
 <Stats {stats}/>
@@ -153,11 +153,25 @@ $: if (yScale) {
                 r="5"
                 fill="steelblue"
                 stroke="white"
-                stroke-width="1"/>
+                stroke-width="1"
+                on:mouseenter={evt => hoveredIndex = index} on:mouseleave={evt => hoveredIndex = -1}
+           />
         {/each}
     {/if}
     </g>    
 </svg>
+
+<dl id="commit-tooltip" class="info tooltip">
+    <dt>Commit</dt>
+    <dd>
+      <a href="{ hoveredCommit.url }" target="_blank">{ hoveredCommit.id }</a>
+    </dd>
+  
+    <dt>Date</dt>
+    <dd>{ hoveredCommit.datetime?.toLocaleString("en", {dateStyle: "full"}) }</dd>
+  
+    <!-- Add: Time, author, lines edited -->
+  </dl>
 
 <style>
     svg{
@@ -176,39 +190,5 @@ $: if (yScale) {
     }
     .gridlines {
         stroke-opacity: 0.2;
-    }
-
-    /*
-    circle{
-        transition: 200ms;
-    }
-
-    &:hover{
-        transform: scale(1.5);
-        transform-origin: center;
-        transform-box: fill-box;
-    }
-    .tooltip {
-    position: fixed;
-    top: 1em;
-    left: 1em;
-  }
-    .info {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 0.5em;
-    margin: 0;
-  }
-
-  .info dt {
-    font-weight: bold;
-    text-align: right;
-    color: #aaa;
-  }
-
-  .info dd {
-    margin: 0;
-  }
-
-  /*
+}
 </style>
