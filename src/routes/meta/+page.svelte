@@ -127,7 +127,7 @@ $: if (xScale && yScale) {
 let yAxisGridlines;
 $: if (yScale) {
   d3.select(yAxisGridlines).call(
-    d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width),
+    d3.axisLeft(yScale).tickFormat((d) => `$(String(d).padStart(2,'0')}:00)`).tickSize(-usableArea.width),
   );
 }
 
