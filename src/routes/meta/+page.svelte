@@ -195,7 +195,8 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
         transform: scale(1.5);
         opacity: 1;
     }
+
     .gridlines {
         stroke-opacity: 0.2;
-}
+    }
 </style>
