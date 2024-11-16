@@ -168,7 +168,7 @@ let cursor = { x: 0, y: 0 };
     </g>    
 </svg>
 
-<dl id="commit-tooltip" class="info tooltip" hidden={hoveredIndex === -1}>
+<dl id="commit-tooltip" class="info tooltip" hidden={hoveredIndex === -1} style="top: {cursor.y}px; left: {cursor.x}px">
     <dt>Commit</dt>
     <dd>
       <a href="{ hoveredCommit.url }" target="_blank">{ hoveredCommit.id }</a>
