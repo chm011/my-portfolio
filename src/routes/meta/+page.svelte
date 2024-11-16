@@ -121,7 +121,6 @@ $: if (data.length>0){
 
 $: if (xScale && yScale) {
   d3.select(xAxis).call(d3.axisBottom(xScale));
-  d3.select(yAxis).call(d3.axisLeft(yScale));
 }
 
 let yAxisGridlines;
