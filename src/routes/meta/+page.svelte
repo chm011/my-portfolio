@@ -193,7 +193,6 @@ let selectedLines = [];
     (d) => d.lines
   );
 
-  console.log("Selected lines:", selectedLines);
 
 let languageBreakdown;
 $: if (selectedLines.length > 0) {
