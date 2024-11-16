@@ -205,7 +205,6 @@ $: if (selectedLines.length > 0) {
             language,
             count / selectedLines.length,
         ]);
-        console.log("Language breakdown:", languageBreakdown);
 
 } else {
     languageBreakdown  = [];
