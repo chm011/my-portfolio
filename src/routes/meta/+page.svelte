@@ -147,11 +147,12 @@ $: {
     }
 }
 
+let brushSelection = null
 
 function brushed(evt) {
     const selection = evt.selection;
     if (selection) {
-        d3.brushSelection = selection;
+        brushSelection = selection;
         console.log("Brush selection:", brushSelection);}
         else{
             brushSelection = null;
@@ -164,9 +165,8 @@ function isCommitSelected(commit) {
     return false;
   }
 
-    const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
-    const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
-    const x = xScale(commit.date);
+    const [min,max] = brushSelection;
+    const x = xScale(commit.dateTime);
     const y = yScale(commit.hourFrac);
     return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
 }
