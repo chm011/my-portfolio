@@ -181,7 +181,7 @@ $: if (yScale) {
     circle{
         transition: 200ms;
     }
-
+/*
     &:hover{
         transform: scale(1.5);
         transform-origin: center;
@@ -208,4 +208,6 @@ $: if (yScale) {
   .info dd {
     margin: 0;
   }
+
+  /*
 </style>
