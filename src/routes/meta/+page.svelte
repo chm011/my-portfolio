@@ -178,10 +178,11 @@ $: if (yScale) {
         stroke-opacity: 0.2;
     }
 
+    /*
     circle{
         transition: 200ms;
     }
-/*
+
     &:hover{
         transform: scale(1.5);
         transform-origin: center;
