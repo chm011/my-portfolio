@@ -155,10 +155,9 @@ function brushed(evt) {
   const selection = evt.selection;
   if (selection) {
     brushSelection = selection;
-    console.log("Brush selection:", brushSelection);
   } else {
     brushSelection = null;
-    console.log("Brush cleared");
+
   }
 }
 
@@ -202,9 +201,10 @@ $: if (selectedLines.length > 0) {
         selectedLines,
         (v) => v.length,
         (d) => d.language || 'Unknown');
-       
-    console.log("Language breakdown:", languageBreakdown); // Check output
     
+    $: console.log("Language breakdown:", languageBreakdown);
+    $: console.log("Selected lines:", selectedLines);
+
     languageBreakdown = Array.from(languageBreakdown, ([language, count]) => ({
         language,
         proportion: count / selectedLines.length,
