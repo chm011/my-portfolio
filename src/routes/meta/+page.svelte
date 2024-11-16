@@ -178,7 +178,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
     <dt>Lines Edited</dt>
     <dd>{hoveredCommit.totalLines || 0}</dd>
-    
+
   </dl>
 
 <style>
@@ -208,5 +208,27 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
     .gridlines {
         stroke-opacity: 0.2;
+    }
+
+    .tooltip{
+        position: fixed;
+        top: 1em;
+        left: 1em;
+    }
+    
+    dl.info{
+        display: grid;
+        grid-template-columns: auto auto; 
+        gap:0.5em;
+        margin:0;
+    }
+
+    .info dt{
+        font-weight: bold;
+        color: #aaa;
+    }
+
+    .info dd{
+        margin: 0;
     }
 </style>
