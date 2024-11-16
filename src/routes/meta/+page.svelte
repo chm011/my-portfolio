@@ -240,8 +240,14 @@ $: if (selectedLines.length > 0) {
         {#if xScale && yScale}
           {#each commits as commit, index}
             <circle
-              cx={xScale(commit.datetime)}
-              cy={yScale(commit.hourFrac)}
+            cx={Math.max(
+                usableArea.left + rScale(commit.totalLines),
+                Math.min(xScale(commit.datetime), usableArea.right - rScale(commit.totalLines))
+              )}
+            cy={Math.max(
+                usableArea.top + rScale(commit.totalLines),
+                Math.min(yScale(commit.hourFrac), usableArea.bottom - rScale(commit.totalLines))
+              )}
               r={rScale(commit.totalLines)}
               fill="steelblue"
               stroke="white"
