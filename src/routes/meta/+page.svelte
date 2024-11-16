@@ -190,24 +190,26 @@ $: hasSelection = brushSelection && selectedCommits.length > 0;
 let selectedLines = [];
 $: selectedLines = (hasSelection ? selectedCommits : commits).flatMap(
   (d) => d.lines,
-);
+  console.log("Selected lines:", selectedLines);
 
+)
 
 let languageBreakdown;
 $: if (selectedLines.length > 0) {
     languageBreakdown = d3.rollups(
         selectedLines,
         (v) => v.length,
-        (d) => d.language || 'Unknown',);
+        (d) => d.language || 'Unknown');
 
         languageBreakdown = Array.from(languageBreakdown, ([language, count]) => [
             language,
             count / selectedLines.length,
         ]);
+        console.log("Language breakdown:", languageBreakdown);
+
 } else {
     languageBreakdown  = [];
 }
-
 </script>
 <Stats {stats}/>
 
