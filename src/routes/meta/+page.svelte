@@ -56,7 +56,6 @@ onMount(async () => {
 
     return ret;
     });
-});
     
 $: totalLOC = d3.sum(data, (d) => d.line);
 $: numberOfFiles = d3.groups(data, d => d.file).length;
@@ -93,22 +92,25 @@ let width = 1000,
     height = 600;
 
 let xScale, yScale;
-    const dataExtent = d3.extent(data, (d) => d.datetime);
+const dataExtent = d3.extent(data, (d) => d.datetime);
 
-    xScale = d3
-        .scaleTime()
-        .domain(dataExtent)
-        .range([0, width])
-        .nice();
+xScale = d3
+    .scaleTime()
+    .domain(dataExtent)
+    .range([0, width])
+    .nice();
     
-    yScale = d3
-        .scaleLinear()
-        .domain([0,24])
-        .range([height,0])
+yScale = d3
+    .scaleLinear()
+    .domain([0,24])
+    .range([height,0])
+});
+
 </script>
 
+<h3> Commits by Time of Day </h3>
 <svg viewBox="0 0 {width} {height}">
-    <g class="dots"></g>
+    <g class="dots">
     {if xScale && yScale}
         {#each commits as commit, index}
             <circle
