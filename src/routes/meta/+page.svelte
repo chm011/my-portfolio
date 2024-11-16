@@ -44,7 +44,7 @@ onMount(async () => {
     length: Number(row.length),
     date: new Date(row.date + 'T00:00' + row.timezone),
     datetime: new Date(row.datetime),
-    language: row.language,
+    lanuage: row.type || 'Unknown',
 }));
 
     commits = d3
@@ -52,17 +52,6 @@ onMount(async () => {
     .map(([commit, lines]) => {
     let first = lines[0];
     let { author, date, time, timezone, datetime } = first;
-
-    let languageCounts = d3.rollup(
-                lines,
-                (v) => v.length,
-                (d) => d.language || 'Unknown'
-            );
-
-    let dominantLanguage = Array.from(languageCounts).reduce(
-        (a, b) => (b[1] > a[1] ? b : a),
-        ['Unknown', 0]
-        )[0];
 
     let ret = {
       id: commit,
@@ -74,7 +63,6 @@ onMount(async () => {
       datetime,
       hourFrac: datetime.getHours() + datetime.getMinutes() / 60,
       totalLines: lines.length,
-      language: dominantLanguage,
     };
 
     // Like ret.lines = lines
@@ -215,14 +203,12 @@ $: if (selectedLines.length > 0) {
         (v) => v.length,
         (d) => d.language || 'Unknown');
 
-        languageBreakdown = Array.from(languageBreakdown, ([language, count]) => [
-            language,
-            count / selectedLines.length,
-        ]);
 
-} else {
-    languageBreakdown  = [];
-}
+$: languageBreakdown = Array.from(languageBreakdown, ([language, count]) => ({
+            language,
+            proportion: count / selectedLines.length,
+}));
+
 </script>
 <Stats {stats}/>
 
