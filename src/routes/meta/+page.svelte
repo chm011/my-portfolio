@@ -138,7 +138,7 @@ $: hoveredCommit = commits[hoveredIndex] ?? hoveredCommit ?? {};
 
 let cursor = { x: 0, y: 0 };
 
-
+let svg;
 $: {
     if (svg){
         d3.select(svg).call(d3.brush());
@@ -205,6 +205,7 @@ $: {
         overflow:visible;
         border: 1px solid #ccc;
     }
+
     circle{
         transition: 200ms;
     }
