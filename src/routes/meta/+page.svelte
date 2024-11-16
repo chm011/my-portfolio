@@ -44,7 +44,7 @@ onMount(async () => {
     length: Number(row.length),
     date: new Date(row.date + 'T00:00' + row.timezone),
     datetime: new Date(row.datetime),
-    lanuage: row.type || 'Unknown',
+    language: row.type || 'Unknown',
 }));
 
     commits = d3
