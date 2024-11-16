@@ -179,7 +179,8 @@ $: {
 $: selectedCommits = brushSelection ? commits.filter(isCommitSelected) : [];
 $: hasSelection = brushSelection && selectedCommits.length > 0;
 
-
+console.log("xScale invert test:", xScale.invert(usableArea.left), xScale.invert(usableArea.right));
+console.log("yScale invert test:", yScale.invert(usableArea.top), yScale.invert(usableArea.bottom));
 </script>
 <Stats {stats}/>
 
