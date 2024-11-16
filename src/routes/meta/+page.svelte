@@ -202,12 +202,14 @@ $: if (selectedLines.length > 0) {
         selectedLines,
         (v) => v.length,
         (d) => d.language || 'Unknown');
-
-
-$: languageBreakdown = Array.from(languageBreakdown, ([language, count]) => ({
+        
+        languageBreakdown = Array.from(languageBreakdown, ([language, count]) => ({
             language,
             proportion: count / selectedLines.length,
 }));
+} else {
+    languageBreakdown = [];
+}
 
 </script>
 <Stats {stats}/>
