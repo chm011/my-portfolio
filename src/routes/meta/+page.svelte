@@ -289,7 +289,7 @@ $: if (selectedLines.length > 0) {
     <h3>Language Breakdown (Pie Chart)</h3>
     {#if languageBreakdown.length > 0}
       <Pie
-        data={languageBreakdown.map(({ language, proportion }) => ({
+        data={languageBreakdown.map(({ language, count }) => ({
           label: language,
           value: count,
         }))}
