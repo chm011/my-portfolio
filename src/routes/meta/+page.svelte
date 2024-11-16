@@ -172,8 +172,20 @@ function isCommitSelected(commit) {
     console.log(`Commit ${commit.id}: x=${x}, y=${y}, selected=${x >= min.x && x <= max.x && y >= min.y && y <= max.y}`);
 
     return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+
+    console.log(`Commit ID: ${commit.id}`);
+    console.log(`Commit X: ${xScale(commit.datetime)}, Commit Y: ${yScale(commit.hourFrac)}`);
+    console.log(`Brush Min X: ${min.x}, Min Y: ${min.y}`);
+    console.log(`Brush Max X: ${max.x}, Max Y: ${max.y}`);
+
     
   }
+
+console.log("xScale Domain:", xScale.domain());
+console.log("yScale Domain:", yScale.domain());
+console.log("xScale Range:", xScale.range());
+console.log("yScale Range:", yScale.range());
+
 
   $: {
   if (brushSelection) {
