@@ -33,16 +33,6 @@ let usableArea = {
 };
 usableArea.width = usableArea.right - usableArea.left;
 usableArea.height = usableArea.bottom - usableArea.top;
-let xAxis, yAxis;
-
-$: {
-  d3.select(xAxis).call(d3.axisBottom(xScale));
-  d3.select(yAxis).call(d3.axisLeft(yScale));
-}
-
-<g transform="translate(0, {usableArea.bottom})" bind:this={xAxis} />
-<g transform="translate({usableArea.left}, 0)" bind:this={yAxis} />
-
 
 onMount(async () => {
     data = await d3.csv('loc.csv', (row) => ({
@@ -99,6 +89,13 @@ onMount(async () => {
         .range([height,0])
     }
 
+    let xAxis, yAxis;
+
+$: {
+  d3.select(xAxis).call(d3.axisBottom(xScale));
+  d3.select(yAxis).call(d3.axisLeft(yScale));
+}
+
 $: totalLOC = d3.sum(data, (d) => d.line);
 $: numberOfFiles = d3.groups(data, d => d.file).length;  
 $: fileLengths = d3.rollups(
@@ -130,6 +127,8 @@ $: stats = [
 
 <h3> Commits by Time of Day </h3>
 <svg viewBox="0 0 {width} {height}">
+    <g transform="translate(0, {height - margin.bottom})" bind:this={xAxis}></g>
+    <g transform="translate({margin.left}, 0)" bind:this={yAxis}></g>
     <g class="dots">
     {#if xScale && yScale}
         {#each commits as commit, index}
