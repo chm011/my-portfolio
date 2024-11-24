@@ -9,14 +9,14 @@
         "title": "Internet Usage Trends",
         "year": "2024",
         "image": "https://raw.githubusercontent.com/chm011/projects/refs/heads/main/Visualizations/Internet%20Usage%20Trends%20-%20Earnest.png",
-        "image": "https://raw.githubusercontent.com/chm011/projects/refs/heads/main/Visualizations/Internet%20Usage%20Trends%20-%20Deceptive.png",
         "description": "How does internet usage vary between countries as developement progresses?"
     },
     {
-        "title": "Pariatur ab numquam tempore",
-        "year": "2021",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Praesentium, est temporibus excepturi distinctio vel eveniet, voluptatem laudantium ad quam sed repellat nostrum impedit fuga velit ut nulla vero illo totam pariatur harum iure debitis non similique eaque! Et."
+        "title": "Bikewtaching",
+        "year": "2024",
+        "image": "/my-portfolio/static/Screenshot 2024-11-23 at 20.53.55.png",
+        "description": "Made from bluebikes data to see the different bike routes and their trends.",
+        "url": "https://chm011.github.io/bikewatching/"
     },
     {
         "title": "Officiis quod aliquam iure!",
