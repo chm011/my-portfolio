@@ -12,7 +12,7 @@ export let hLevel =2;
     <div id = 'project_description'>
     <p>{data.description}</p>
     <p><span style="font-family: Baskerville; font-variant-numeric: oldstyle-nums;">Created on {data.year}</p>
-    <p>{data.url}</p>
+    <p>URL:{data.url}</p>
     </div>
 </article>
 
